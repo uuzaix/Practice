@@ -1,4 +1,4 @@
-def checker(i):
+def print_fizzbuzz_for(i):
 	if i%3 == 0 and i%5 == 0:
 		print "FizzBuzz"
 	elif i%3 == 0:				
@@ -8,8 +8,8 @@ def checker(i):
 	else:
 		print i
 
-def counter():
+def determine_range():
 	for i in range(1,101):
-		checker(i)
+		print_fizzbuzz_for(i)
 		
-counter() 
+determine_range() 
