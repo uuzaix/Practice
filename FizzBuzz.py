@@ -8,8 +8,10 @@ def print_fizzbuzz_for(i):
 	else:
 		print i
 
-def determine_range():
-	for i in range(1,101):
+def fizzbuzz():
+	n= 101
+	for i in range(1,n):
 		print_fizzbuzz_for(i)
 		
-determine_range() 
+		
+fizzbuzz() 
