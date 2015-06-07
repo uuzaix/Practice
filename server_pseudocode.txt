@@ -2,12 +2,16 @@ create socket
 bind to 8000
 start to listen
 connection, address -> accept connection
-make file out of incoming request
-read lines from file
+connection.makefile
+read first line from file
 split into words
 if first word is not GET -> error
 if first word is GET -> path = second word
-continue reading lines till line is empty
-then send a message
+
+read lines from file:
+	if line is not empty - read next line
+	if line is empty - send a message
+
+
 
 
