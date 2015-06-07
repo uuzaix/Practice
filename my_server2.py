@@ -22,15 +22,15 @@ data = connection.makefile()
 
 for line in data:
 	if line != '\r\n':
-		print line
+		#print line
 		if line[:3] == 'GET':
 			list_data = line.split()
 			path = list_data[1]
 			message = 'HTTP/1.1 200 OK\n' + '\n' +"Hello, %s" % path
-			print message			
+			#print message			
 		
 	else:
-		print "1"		
+		#print "1"		
 		connection.sendall(message)
 		break
 connection.close()
