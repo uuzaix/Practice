@@ -11,7 +11,7 @@ if first word is GET -> path = second word
 read lines from file:
 	if line is empty - break
 
-send a message: Status + empty line + path
+write a message into a file: Status + empty line + path
 
 
 
