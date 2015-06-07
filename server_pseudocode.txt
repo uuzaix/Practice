@@ -9,8 +9,9 @@ if first word is not GET -> error
 if first word is GET -> path = second word
 
 read lines from file:
-	if line is not empty - read next line
-	if line is empty - send a message
+	if line is empty - break
+
+send a message: Status + empty line + path
 
 
 
