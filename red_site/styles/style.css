@@ -1,4 +1,9 @@
-p {
+.blackText {
 color: black;
+font-size: 25px;
+}
+
+.redText {
+color: red;
 font-size: 25px;
 }

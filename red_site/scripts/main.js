@@ -1,5 +1,14 @@
-var myVar = document.querySelector("html");
-var checkbox = document.createElement("input");
-checkbox.setAttribute("type", "checkbox");
-myVar.appendChild(checkbox);
+var text = document.querySelector('p');
+var checkbox = document.getElementById('checkbox');
+
+checkbox.onclick = function (){
+if (checkbox.checked){
+text.setAttribute("class", 'redText');
+}
+else{
+text.setAttribute("class", 'blackText');
+}
+}
+
+
 
