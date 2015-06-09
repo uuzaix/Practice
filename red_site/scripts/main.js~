@@ -1,0 +1,13 @@
+var myVar = document.querySelector("html");
+var checkbox = document.createElement("input");
+checkbox.setAttribute("type", "checkbox");
+myVar.appendChild(checkbox);
+
+
+var myVar2 = document.querySelector("html");
+if (checkbox.checked){
+myVar2.style.color = 'red';
+}
+else{
+myVar2.style.color = 'black';
+}
