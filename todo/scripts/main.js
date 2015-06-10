@@ -10,10 +10,10 @@ function addToList() {
 	console.log(input);
 }
 
-button.onclick = addToList();
+button.onclick = addToList;
 
-document.onekeydown	= function(){
-	if (e.keyCode == '13'){
+document.onkeydown	= function(){
+	if (window.event.keyCode == '13'){
 		addToList();
 	}
 }
