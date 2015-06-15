@@ -11,8 +11,10 @@ function addToList() {
 	checkBox.value = name;
 	checkBox.checked = false;
 
-	output.appendChild(document.createTextNode(input)); 
-	list.appendChild(checkBox);
+	
+	output.appendChild(checkBox);
+	output.appendChild(document.createTextNode(input));
+	 
 	list.appendChild(output);
 	console.log(input);
 	document.getElementById('input').value = null;
