@@ -1,29 +1,39 @@
-var button =  document.getElementById('button')
-var list = document.getElementById('todo-list')
+var button =  document.getElementById('button');
+var list = document.getElementById('todo-list');
+var x = 0;
 
 function addToList() {
-	var input = document.getElementById('input').value;
-	var output = document.createElement('li');
+	x++;
+	var input = document.getElementById('input');
+	var li = document.createElement('li');
+	//li.id = 'x'
 
 	var checkBox = document.createElement("input");
 	checkBox.type = 'checkbox';
-	checkBox.id = 'c1';
-	checkBox.value = name;
+	checkBox.id = 'x';
 	checkBox.checked = false;
+	li.appendChild(checkBox);
 
-	
-	output.appendChild(checkBox);
-	output.appendChild(document.createTextNode(input));
-	 
-	list.appendChild(output);
-	console.log(input);
-	document.getElementById('input').value = null;
+	li.appendChild(document.createTextNode(input.value));
+	list.appendChild(li);
+
+	console.log(x);
+	input.value = null;
 }
 
 button.onclick = addToList;
 
-document.onkeydown    = function(){
+document.onkeydown = function(){
 	if (window.event.keyCode == '13'){
 		addToList();
 	}
 }
+
+/*document.getElementById('x').onclick = function() {
+	if (checkBox.checked) {
+		??.setAttribute('class', 'lineThrough');
+	}
+	else {
+		??.setAttribute('class', 'normal');
+	}
+}*/
