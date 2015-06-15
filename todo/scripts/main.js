@@ -6,18 +6,19 @@ function addToList() {
 	x++;
 	var input = document.getElementById('input');
 	var li = document.createElement('li');
-	//li.id = 'x'
+	li.id = x+ '_li'
 
 	var checkBox = document.createElement("input");
 	checkBox.type = 'checkbox';
-	checkBox.id = 'x';
+	checkBox.id = x+"_chb";
 	checkBox.checked = false;
 	li.appendChild(checkBox);
 
 	li.appendChild(document.createTextNode(input.value));
 	list.appendChild(li);
 
-	console.log(x);
+	console.log(li.id);
+	console.log(checkBox.id);
 	input.value = null;
 }
 
