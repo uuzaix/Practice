@@ -1,4 +1,4 @@
-var button =  document.getElementById('button');
+var addButton =  document.getElementById('button');
 var list = document.getElementById('todo-list');
 var x = 0;
 
@@ -17,19 +17,19 @@ function addToList() {
 	li.appendChild(document.createTextNode(input.value));
 	list.appendChild(li);
 
-	var button = document.createElement ("input");
-	button.type = 'submit';
-	button.id = x + "_bt";
-	button.value = "Delete";
-	li.appendChild(button);
+	var deleteButton = document.createElement ("input");
+	deleteButton.type = 'submit';
+	deleteButton.id = x + "_bt";
+	deleteButton.value = "Delete";
+	li.appendChild(deleteButton);
 
 	console.log(li.id);
 	console.log(checkBox.id);
-	console.log(button.id);
+	console.log(deleteButton.id);
 	input.value = null;
 }
 
-button.onclick = addToList;
+addButton.onclick = addToList;
 
 document.onkeydown = function(){
 	if (window.event.keyCode == '13'){
@@ -37,7 +37,9 @@ document.onkeydown = function(){
 	}
 }
 
-/*document.getElementById('li').onclick = function() {
+/*
+
+function changeToDone () {
 	if (checkBox.checked) {
 		??.setAttribute('class', 'lineThrough');
 	}
@@ -45,3 +47,10 @@ document.onkeydown = function(){
 		??.setAttribute('class', 'normal');
 	}
 }*/
+
+/*function deleteFromList() {
+	var selection = document.getElementById("ID");
+	slection.parentNode.removeChild();
+
+deleteButton.onclick = deleteFromList;
+*/
