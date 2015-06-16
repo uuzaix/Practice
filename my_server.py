@@ -20,7 +20,7 @@ while True:
 	try:
 		print 'connection from', client_address
 		while True:
-			data = connection.recv(5000)
+			data = connection.recv(4096)
 			print 'received "%s"' % data
 			if data:
 				if data[:3] == 'GET':
@@ -28,9 +28,8 @@ while True:
 					path = list_data[1]
 					message = "Hello, %s" % path			
 					connection.send(message)
-					break
-				else:
-					break
+
+				break
 
 			else:
 				print 'no more data from', client_address
