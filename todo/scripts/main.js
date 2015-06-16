@@ -6,7 +6,7 @@ function addToList() {
 	x++;
 	var input = document.getElementById('input');
 	var li = document.createElement('li');
-	li.id = x + '_li'
+	li.id = x + '_li';
 
 	var checkBox = document.createElement("input");
 	checkBox.type = 'checkbox';
@@ -23,34 +23,35 @@ function addToList() {
 	deleteButton.value = "Delete";
 	li.appendChild(deleteButton);
 
+	checkBox.onclick = function() {
+		if (checkBox.checked) {
+			li.setAttribute("class", "lineThrough");
+		}
+		else {
+			li.setAttribute("class", "normal");
+		}
+	}
+
+
+
 	console.log(li.id);
 	console.log(checkBox.id);
 	console.log(deleteButton.id);
+
 	input.value = null;
 }
 
 addButton.onclick = addToList;
 
-document.onkeydown = function(){
-	if (window.event.keyCode == '13'){
+document.onkeydown = function() {
+	if (window.event.keyCode == '13') {
 		addToList();
 	}
 }
 
 /*
 
-function changeToDone () {
-	if (checkBox.checked) {
-		??.setAttribute('class', 'lineThrough');
+	deleteButton.onclick = function() {
+		li.parentNode.removeChild();
 	}
-	else {
-		??.setAttribute('class', 'normal');
-	}
-}*/
-
-/*function deleteFromList() {
-	var selection = document.getElementById("ID");
-	slection.parentNode.removeChild();
-
-deleteButton.onclick = deleteFromList;
 */
