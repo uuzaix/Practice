@@ -6,11 +6,9 @@ function addToList() {
 	x++;
 	var input = document.getElementById('input');
 	var li = document.createElement('li');
-	li.id = x + '_li';
 
 	var checkBox = document.createElement("input");
 	checkBox.type = 'checkbox';
-	checkBox.id = x + "_chb";
 	checkBox.checked = false;
 	li.appendChild(checkBox);
 
@@ -19,7 +17,6 @@ function addToList() {
 
 	var deleteButton = document.createElement ("input");
 	deleteButton.type = 'submit';
-	deleteButton.id = x + "_bt";
 	deleteButton.value = "Delete";
 	li.appendChild(deleteButton);
 
@@ -32,11 +29,9 @@ function addToList() {
 		}
 	}
 
-
-
-	console.log(li.id);
-	console.log(checkBox.id);
-	console.log(deleteButton.id);
+	deleteButton.onclick = function() {
+		li.parentNode.removeChild(li);
+	}
 
 	input.value = null;
 }
@@ -48,10 +43,3 @@ document.onkeydown = function() {
 		addToList();
 	}
 }
-
-/*
-
-	deleteButton.onclick = function() {
-		li.parentNode.removeChild();
-	}
-*/
