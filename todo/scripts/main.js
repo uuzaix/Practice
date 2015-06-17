@@ -10,6 +10,7 @@ function addToList() {
 	var checkBox = document.createElement("input");
 	checkBox.type = 'checkbox';
 	checkBox.checked = false;
+	checkBox.style.margin = '5px';
 	li.appendChild(checkBox);
 
 	li.appendChild(document.createTextNode(input.value));
@@ -18,6 +19,7 @@ function addToList() {
 	var deleteButton = document.createElement ("input");
 	deleteButton.type = 'submit';
 	deleteButton.value = "Delete";
+	deleteButton.style.margin = '5px 15px';
 	li.appendChild(deleteButton);
 
 	checkBox.onclick = function() {
