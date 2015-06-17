@@ -38,10 +38,14 @@ function addToList() {
 	input.value = null;
 }
 
-addButton.onclick = addToList;
+addButton.onclick = function() {
+	if (!document.getElementById('input').value == '') {
+		addToList();
+	}
+}
 
 document.onkeydown = function() {
-	if (window.event.keyCode == '13') {
+	if ((window.event.keyCode == '13') && (!document.getElementById('input').value == '')) {
 		addToList();
 	}
 }
