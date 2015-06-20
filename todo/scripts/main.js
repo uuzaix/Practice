@@ -1,23 +1,25 @@
 var addButton =  document.getElementById('button');
 var list = document.getElementById('todo-list');
-var count = 0;
+var count = 1;
+//count++;
+var storageLength = localStorage.length;
+var newInput;
 
-function addToList() {
-
+function addToList(newId, addInput, checkedStatus) {
 	count++;
-	var input = document.getElementById('input');
+
 	var li = document.createElement('li');
 	var checkBox = document.createElement("input");
 	var deleteButton = document.createElement("input");
 
-	if (input.value == '') {
+	if (addInput == '') {
 		return;
 	}
 
-	li.id = count + '_li';
+	li.id = newId + '_li';
 
 	checkBox.type = 'checkbox';
-	checkBox.checked = false;
+	checkBox.checked = checkedStatus;
 	checkBox.style.margin = '5px';
 	
 	deleteButton.type = 'submit';
@@ -25,17 +27,26 @@ function addToList() {
 	deleteButton.style.margin = '5px 15px';
 
 	li.appendChild(checkBox);
-	li.appendChild(document.createTextNode(input.value));
+	li.appendChild(document.createTextNode(addInput));
 	li.appendChild(deleteButton);
 
 
 	list.appendChild(li);
 
+	if (checkBox.checked) {
+			li.setAttribute("class", "lineThrough");
+		}
+
 	function writeStorage() {
-		localStorage.setItem(li.id,JSON.stringify([input.value, checkBox.checked]));
+		localStorage.setItem(li.id,JSON.stringify([addInput, checkBox.checked]));
 	}
 
 	writeStorage();
+
+	function readStorage() {
+		currentStateString = localStorage.getItem(li.id);
+		currentStateList = JSON.parse(currentStateString);
+	}
 
 	function updateStorage(){
 		readStorage();
@@ -43,20 +54,14 @@ function addToList() {
 		localStorage.setItem(li.id,JSON.stringify(currentStateList));
 	}
 
-	function readStorage() {
-		currentStateString = localStorage.getItem(li.id);
-		currentStateList = JSON.parse(currentStateString);
-	}
-
 	checkBox.onclick = function() {
 		if (checkBox.checked) {
 			li.setAttribute("class", "lineThrough");
-			updateStorage();
 		}
 		else {
 			li.setAttribute("class", "normal");
-			updateStorage();
 		}
+		updateStorage();
 	}
 
 	deleteButton.onclick = function() {
@@ -64,15 +69,36 @@ function addToList() {
 		localStorage.removeItem(li.id);
 	}
 
-	input.value = '';
+	newInput = null;
+	console.log(newInput);
 }
 
 
-addButton.onclick = addToList;
+addButton.onclick = function() {
+	newInput = document.getElementById('input').value;
+	addToList(count, newInput, false);
+}
+
 
 
 document.onkeydown = function() {
 	if (window.event.keyCode == '13') {
-		addToList();
+		newInput = document.getElementById('input').value;
+		addToList(count, newInput, false);
+	}
+}
+
+
+window.onload = function() {
+	console.log(storageLength);
+	if (!storageLength == 0){
+		for (var i = 1; i <= storageLength; i++){
+			var storageKey = i + '_li';
+			var savedInputString = localStorage.getItem(storageKey);
+			var savedInputList = JSON.parse(savedInputString);
+			var savedInput = savedInputList[0];
+
+			addToList(i, savedInput, savedInputList[1]);
+		}
 	}
 }
