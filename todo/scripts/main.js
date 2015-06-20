@@ -31,14 +31,31 @@ function addToList() {
 
 	list.appendChild(li);
 
-	localStorage.setItem(li.id,[input.value, checkBox.checked]);
+	function writeStorage() {
+		localStorage.setItem(li.id,JSON.stringify([input.value, checkBox.checked]));
+	}
+
+	writeStorage();
+
+	function updateStorage(){
+		readStorage();
+		currentStateList = [currentStateList[0], checkBox.checked];
+		localStorage.setItem(li.id,JSON.stringify(currentStateList));
+	}
+
+	function readStorage() {
+		currentStateString = localStorage.getItem(li.id);
+		currentStateList = JSON.parse(currentStateString);
+	}
 
 	checkBox.onclick = function() {
 		if (checkBox.checked) {
 			li.setAttribute("class", "lineThrough");
+			updateStorage();
 		}
 		else {
 			li.setAttribute("class", "normal");
+			updateStorage();
 		}
 	}
 
