@@ -10,7 +10,7 @@ if (localStorage.length == 0) {
 
 var maxStorageId = parseInt(localStorage.getItem('max'));
 
-function addToList(newId, addInput, checkedStatus) {
+function createList(newId, addInput, checkedStatus) {
 	var li = document.createElement('li');
 	var checkBox = document.createElement("input");
 	var deleteButton = document.createElement("input");
@@ -67,20 +67,20 @@ function addToList(newId, addInput, checkedStatus) {
 		li.parentNode.removeChild(li);
 		localStorage.removeItem(li.id);
 	}
-	newInput = null;
+	addInput = '';
 }
 
-addButton.onclick = function() {
+function addToList() {
 	newInput = document.getElementById('input').value;
 	maxStorageId = parseInt(localStorage.getItem('max'));
-	addToList((maxStorageId +1), newInput, false);
+	createList((maxStorageId +1), newInput, false);
 }
+
+addButton.onclick = addToList; 
 
 document.onkeydown = function() {
 	if (window.event.keyCode == '13') {
-		newInput = document.getElementById('input').value;
-		maxStorageId = parseInt(localStorage.getItem('max'));
-		addToList((maxStorageId +1), newInput, false);
+		addToList();
 	}
 }
 
@@ -91,7 +91,7 @@ window.onload = function() {
 			var savedInputString = localStorage.getItem(storageKey);
 			var savedInputList = JSON.parse(savedInputString);
 			if (savedInputList) {
-				addToList(i, savedInputList[0], savedInputList[1]);
+				createList(i, savedInputList[0], savedInputList[1]);
 			}
 		}
 	}
