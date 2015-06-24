@@ -67,7 +67,7 @@ function createList(newId, addInput, checkedStatus) {
 		li.parentNode.removeChild(li);
 		localStorage.removeItem(li.id);
 	}
-	addInput = '';
+	document.getElementById('input').value = null;
 }
 
 function addToList() {
