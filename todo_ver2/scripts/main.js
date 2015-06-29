@@ -8,12 +8,11 @@ var count = 0;
 if (!localStorage.getItem('max')) {
 	localStorage.setItem("max", "0");
 }
-var maxId = parseInt(localStorage.getItem('max'));
 
+var maxId = parseInt(localStorage.getItem('max'));
 
 function createList (addId, elementValue, checkBoxState) {
 	count ++;
-	// console.log(count);
 	var element = document.createElement("li");
 	var deleteButton = document.createElement("input");
 	var checkBox = document.createElement("input");
@@ -25,9 +24,12 @@ function createList (addId, elementValue, checkBoxState) {
 	element.id = addId +'_li'
 	checkBox.setAttribute("type", "checkbox");
 	checkBox.checked = checkBoxState;
+	checkBox.style.margin = '5px';
 
 	deleteButton.setAttribute("type", "submit");
 	deleteButton.setAttribute("value", "Delete");
+	deleteButton.setAttribute("class", "btn btn-warning btn-xs");
+	deleteButton.style.margin = '5px 15px';
 
 
 	element.appendChild(checkBox);
