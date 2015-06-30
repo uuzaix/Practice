@@ -21,7 +21,7 @@ function createList (addId, elementValue, checkBoxState) {
 		return;
 	}
 
-	element.id = addId +'_li'
+	element.id = addId +'_li';
 	checkBox.setAttribute("type", "checkbox");
 	checkBox.checked = checkBoxState;
 	checkBox.style.margin = '5px';
