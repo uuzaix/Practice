@@ -21,7 +21,7 @@ function createList (addId, elementValue, checkBoxState) {
 		return;
 	}
 
-	element.id = addId +'_li';
+	element.id = addId;
 	checkBox.setAttribute("type", "checkbox");
 	checkBox.checked = checkBoxState;
 	checkBox.style.margin = '5px';
@@ -41,20 +41,6 @@ function createList (addId, elementValue, checkBoxState) {
 		element.setAttribute("class", "lineThrough");
 	}
 
-
-	var storageValue = JSON.stringify([elementValue, checkBoxState]);
-	localStorage.setItem(element.id, storageValue);
-	localStorage.setItem('max', addId);
-
-	makeRequest('POST', 'http://localhost:5000/api/todos', null);
-
-	function updateStorage() {
-		updateValue = JSON.parse(localStorage.getItem(element.id));
-		localStorage.setItem(element.id, JSON.stringify([updateValue[0],checkBox.checked]));
-		dataToSent = {"text":updateValue[0], "done":checkBox.checked}
-		makeRequest('PUT', 'http://localhost:5000/api/todos/'+ element.id, dataToSent)
-	}
-
 	checkBox.onclick = function() {
 		if (checkBox.checked) {
 			element.setAttribute("class", "lineThrough");
@@ -65,20 +51,31 @@ function createList (addId, elementValue, checkBoxState) {
 		updateStorage();
 	}
 
+	function updateStorage() {
+		// localStorage.setItem(element.id, JSON.stringify([updateValue[0],checkBox.checked]));
+		dataToSent = JSON.stringify({"id":element.id, "done":checkBox.checked});
+		makeRequest('PUT', 'http://localhost:5000/api/todos/'+ element.id, dataToSent);
+	}
+
 	deleteButton.onclick = function() {
 		element.parentNode.removeChild(element);
 		// localStorage.removeItem(element.id);
 		makeRequest('DELETE', 'http://localhost:5000/api/todos/'+ element.id, null);
 	}
-
-	document.getElementById('input').value = ''
+	// document.getElementById('input').value = ''
 }
+
+
 
 
 function addList() {
 	newInput = document.getElementById('input').value;
-	var newId = parseInt(localStorage.getItem('max'));
-	createList(newId+1, newInput, false);
+	// var newId = parseInt(localStorage.getItem('max'));
+	// createList(newId+1, newInput, false);
+	var sent_data = JSON.stringify({"text":newInput, "done":false});
+	var a = makeRequest('POST', 'http://localhost:5000/api/todos', sent_data);
+	var new_task = JSON.parse(a);
+	createList(new_task.id, new_task.text, new_task.done);
 }
 
 addButton.onclick = addList;
@@ -89,31 +86,15 @@ document.onkeydown = function() {
 	}
 }
 
-
 window.onload = function() {
-	makeRequest('GET', 'http://localhost:5000/api/todos', null);
-	console.log ('aaa');
-	// console.log ("the response is -" + response);
-	// if (response.length > 1){ 
-	// 	for (i=0; i < response.length; i++) {
-	// 		currentValue
-	// 	}
-	// }
-
-	// if (storageLength > 1) {
-	// 	for (i=1; i <= maxId; i++) {
-	// 		currentId = i + '_li';
-	// 		currentValue = JSON.parse(localStorage.getItem(currentId));
-	// 		if (currentValue) {
-	// 			createList(i, currentValue[0], currentValue[1]);
-	// 		}
-	// 	}
-	// }
+	var tasks = JSON.parse(makeRequest('GET', 'http://localhost:5000/api/todos', null)).tasks;
+	if (tasks.length > 0){ 
+		for (i=0; i < tasks.length; i++) {
+			var task = tasks[i];
+			createList(task.id, task.text, task.done);
+		}
+	}
 }
-
-var httpRequest;
-var response;
-
 
 function makeRequest(method, url, data) {
 	console.log(method);
@@ -121,6 +102,7 @@ function makeRequest(method, url, data) {
 	console.log(data);
 	if (window.XMLHttpRequest) {
 		httpRequest = new XMLHttpRequest();
+		// console.log(httpRequest);
 	}
 	else if (window.ActiveXObject) {
 		try {
@@ -136,25 +118,27 @@ function makeRequest(method, url, data) {
 	if (!httpRequest) {
 		alert('Giving up :( Cannot create an XMLHTTP instance');
 			return false;
-	}
-	httpRequest.onreadystatechange = alertContents;
-	httpRequest.open(method, url, true);
+		}
+	// httpRequest.onreadystatechange = alertContents;
+	httpRequest.open(method, url, false);
 	// httpRequest.setRequestHeader('Content-Type', 'application/json');
 	httpRequest.send(data);
-	response = JSON.parse(httpRequest.responseText);
+	var response = httpRequest.responseText;
+	console.log(typeof httpRequest.responseText);
 	console.log(httpRequest.responseText);
-	// return response;
+	return response;
 }
 
 
-function alertContents() {
-	if (httpRequest.readyState === 4) {
-		console.log ('4')
-		if (httpRequest.status === 200) {
-			console.log ('200')
-			alert(httpRequest.responseText);
-		} else {
-			alert('There was a problem with the request.');
-		}
-	}
-}
+// function alertContents() {
+// 	if (httpRequest.readyState === 4) {
+// 		console.log ('4')
+// 		if (httpRequest.status === 200) {
+// 			console.log ('200')
+// 			alert(httpRequest.responseText);
+// 		} else {
+// 			alert('There was a problem with the request.');
+// 		}
+// 	}
+// }
+
