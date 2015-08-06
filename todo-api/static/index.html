@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+	<title>To Do list</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href="styles/style.css" rel = "stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<h3>Please enter the task: </h3>
+				<form class="form-inline" role="form">
+					<div class="form-group">
+						<input type="text" id="input" class="form-control" placeholder="Add an item" autofocus/>
+					</div>
+					<input type= "button" id="addButton" class="btn btn-success btn-lg" value="Add" style = "margin: 15px"/>
+				</form>
+				<ul id="todo_list" style="main"> </ul>
+			</div>
+		</div>
+	</div>
+	<script src = "scripts/main.js"> </script>
+
+</body>
+</html>
