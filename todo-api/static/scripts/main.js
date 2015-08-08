@@ -78,7 +78,8 @@ function createList (id, elementValue, checkBoxState) {
 }
 
 window.onload = function() {
-	var tasks = JSON.parse(makeRequest('GET', 'http://localhost:5000/api/todos', null)).tasks;
+	var response = makeRequest('GET', 'http://localhost:5000/api/todos', null);
+	var tasks = JSON.parse(response).tasks;
 	if (tasks.length > 0){ 
 		for (i=0; i < tasks.length; i++) {
 			var task = tasks[i];
@@ -90,7 +91,7 @@ window.onload = function() {
 function addNewTask() {
 	var input = document.getElementById('input').value;
 	var dataToSent = JSON.stringify({"text":input, "done":false});
-	var response = makeRequest('POST', 'http://localhost:5000/api/todos', dataToSent)
+	var response = makeRequest('POST', 'http://localhost:5000/api/todos', dataToSent);
 	var newTask = JSON.parse(response);
 	createList(newTask.id, newTask.text, newTask.done);
 }
