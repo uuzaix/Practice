@@ -10,16 +10,17 @@ function makeRequest(method, url, data) {
 	return response.responseText;
 }
 
-function createCheckBox(checkBox, checkBoxState) {
+function createCheckBox(checkBoxState) {
+	var checkBox = document.createElement("input");
 	checkBox.setAttribute("type", "checkbox");
 	checkBox.checked = checkBoxState;
-	checkBox.style.margin = '5px';
+	return checkBox;
 }
 
 function createList (id, elementValue, checkBoxState) {
 	var list = document.getElementById('todo_list');
 	var element = document.createElement("li");
-	var checkBox = document.createElement("input");
+
 	var deleteButton = document.createElement("input");
 
 	if (elementValue == "") {
@@ -28,12 +29,12 @@ function createList (id, elementValue, checkBoxState) {
 
 	element.id = id;
 
-	createCheckBox(checkBox, checkBoxState);
+	var checkBox = createCheckBox(checkBoxState);
 
 	deleteButton.setAttribute("type", "submit");
 	deleteButton.setAttribute("value", "Delete");
 	deleteButton.setAttribute("class", "btn btn-warning btn-xs");
-	deleteButton.style.margin = '5px 15px';
+
 
 	element.appendChild(checkBox);
 	element.appendChild(document.createTextNode(elementValue));
