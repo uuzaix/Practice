@@ -1,3 +1,6 @@
+
+var url = 'http://localhost:5000/api/todos'
+
 function makeRequest(method, url, data) {
 	var response = $.ajax({
 		async: false,
@@ -58,19 +61,19 @@ function createList (id, taskValue, checkBoxState) {
 
 	function updateTask() {
 		var dataToSent = JSON.stringify({"id":task.id, "done":checkBox.checked});
-		makeRequest('PUT', 'http://localhost:5000/api/todos/'+ task.id, dataToSent);
+		makeRequest('PUT', url + "/" + task.id, dataToSent);
 	}
 
 	deleteButton.onclick = function() {
 		task.parentNode.removeChild(task);
-		makeRequest('DELETE', 'http://localhost:5000/api/todos/'+ task.id, null);
+		makeRequest('DELETE', url + "/" + task.id, null);
 	}
 
 	document.getElementById('input').value = ''
 }
 
 window.onload = function() {
-	var response = makeRequest('GET', 'http://localhost:5000/api/todos', null);
+	var response = makeRequest('GET', url, null);
 	var tasks = JSON.parse(response).tasks;
 	if (tasks.length > 0){ 
 		for (i=0; i < tasks.length; i++) {
@@ -83,7 +86,7 @@ window.onload = function() {
 function addNewTask() {
 	var input = document.getElementById('input').value;
 	var dataToSent = JSON.stringify({"text":input, "done":false});
-	var response = makeRequest('POST', 'http://localhost:5000/api/todos', dataToSent);
+	var response = makeRequest('POST', url, dataToSent);
 	var newTask = JSON.parse(response);
 	createList(newTask.id, newTask.text, newTask.done);
 }
