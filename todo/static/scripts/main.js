@@ -17,24 +17,25 @@ function createCheckBox(checkBoxState) {
 	return checkBox;
 }
 
+function createDeleteButton() {
+	var deleteButton = document.createElement("input");
+	deleteButton.setAttribute("type", "submit");
+	deleteButton.setAttribute("value", "Delete");
+	deleteButton.setAttribute("class", "btn btn-warning btn-xs");
+	return deleteButton;
+}
+
 function createList (id, elementValue, checkBoxState) {
 	var list = document.getElementById('todo_list');
 	var element = document.createElement("li");
-
-	var deleteButton = document.createElement("input");
+	element.id = id;
 
 	if (elementValue == "") {
 		return;
 	}
 
-	element.id = id;
-
 	var checkBox = createCheckBox(checkBoxState);
-
-	deleteButton.setAttribute("type", "submit");
-	deleteButton.setAttribute("value", "Delete");
-	deleteButton.setAttribute("class", "btn btn-warning btn-xs");
-
+	var deleteButton = createDeleteButton();
 
 	element.appendChild(checkBox);
 	element.appendChild(document.createTextNode(elementValue));
