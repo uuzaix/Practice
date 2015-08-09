@@ -56,23 +56,25 @@ function createList (id, taskValue, checkBoxState) {
 		else {
 			task.setAttribute("class", "normal");
 		}
-		updateTask();
+		modifyTask(task.id, checkBox.checked);
 	}
 
-	function updateTask() {
-		var dataToSent = JSON.stringify({"id":task.id, "done":checkBox.checked});
-		makeRequest('PUT', url + "/" + task.id, dataToSent);
-	}
-
-	deleteButton.onclick = function() {
+	function deleteTask() {
 		task.parentNode.removeChild(task);
 		makeRequest('DELETE', url + "/" + task.id, null);
 	}
 
+	deleteButton.onclick = deleteTask;
+
 	document.getElementById('input').value = ''
 }
 
-window.onload = function() {
+function modifyTask(id, checkBoxState) {
+	var dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
+	makeRequest('PUT', url + "/" + id, dataToSent);
+}
+
+function getAllTasks() {
 	var response = makeRequest('GET', url, null);
 	var tasks = JSON.parse(response).tasks;
 	if (tasks.length > 0){ 
@@ -83,7 +85,9 @@ window.onload = function() {
 	}
 }
 
-function addNewTask() {
+window.onload = getAllTasks();
+
+function createTask() {
 	var input = document.getElementById('input').value;
 	var dataToSent = JSON.stringify({"text":input, "done":false});
 	var response = makeRequest('POST', url, dataToSent);
@@ -93,10 +97,10 @@ function addNewTask() {
 
 var addButton = document.getElementById("addButton");
 
-addButton.onclick = addNewTask;
+addButton.onclick = createTask;
 
 document.onkeydown = function() {
 	if (window.event.keyCode == '13') {
-		addNewTask();
+		createTask();
 	}
 }
