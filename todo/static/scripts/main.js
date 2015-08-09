@@ -25,45 +25,45 @@ function createDeleteButton() {
 	return deleteButton;
 }
 
-function createList (id, elementValue, checkBoxState) {
+function createList (id, taskValue, checkBoxState) {
 	var list = document.getElementById('todo_list');
-	var element = document.createElement("li");
-	element.id = id;
+	var task = document.createElement("li");
+	task.id = id;
 
-	if (elementValue == "") {
+	if (taskValue == "") {
 		return;
 	}
 
 	var checkBox = createCheckBox(checkBoxState);
 	var deleteButton = createDeleteButton();
 
-	element.appendChild(checkBox);
-	element.appendChild(document.createTextNode(elementValue));
-	element.appendChild(deleteButton);
-	list.appendChild(element);
+	task.appendChild(checkBox);
+	task.appendChild(document.createTextNode(taskValue));
+	task.appendChild(deleteButton);
+	list.appendChild(task);
 
 	if (checkBox.checked) {
-		element.setAttribute("class", "lineThrough");
+		task.setAttribute("class", "lineThrough");
 	}
 
 	checkBox.onclick = function() {
 		if (checkBox.checked) {
-			element.setAttribute("class", "lineThrough");
+			task.setAttribute("class", "lineThrough");
 		}
 		else {
-			element.setAttribute("class", "normal");
+			task.setAttribute("class", "normal");
 		}
 		updateTask();
 	}
 
 	function updateTask() {
-		var dataToSent = JSON.stringify({"id":element.id, "done":checkBox.checked});
-		makeRequest('PUT', 'http://localhost:5000/api/todos/'+ element.id, dataToSent);
+		var dataToSent = JSON.stringify({"id":task.id, "done":checkBox.checked});
+		makeRequest('PUT', 'http://localhost:5000/api/todos/'+ task.id, dataToSent);
 	}
 
 	deleteButton.onclick = function() {
-		element.parentNode.removeChild(element);
-		makeRequest('DELETE', 'http://localhost:5000/api/todos/'+ element.id, null);
+		task.parentNode.removeChild(task);
+		makeRequest('DELETE', 'http://localhost:5000/api/todos/'+ task.id, null);
 	}
 
 	document.getElementById('input').value = ''
