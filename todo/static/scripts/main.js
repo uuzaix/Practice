@@ -10,6 +10,12 @@ function makeRequest(method, url, data) {
 	return response.responseText;
 }
 
+function createCheckBox(checkBox, checkBoxState) {
+	checkBox.setAttribute("type", "checkbox");
+	checkBox.checked = checkBoxState;
+	checkBox.style.margin = '5px';
+}
+
 function createList (id, elementValue, checkBoxState) {
 	var list = document.getElementById('todo_list');
 	var element = document.createElement("li");
@@ -21,9 +27,8 @@ function createList (id, elementValue, checkBoxState) {
 	}
 
 	element.id = id;
-	checkBox.setAttribute("type", "checkbox");
-	checkBox.checked = checkBoxState;
-	checkBox.style.margin = '5px';
+
+	createCheckBox(checkBox, checkBoxState);
 
 	deleteButton.setAttribute("type", "submit");
 	deleteButton.setAttribute("value", "Delete");
