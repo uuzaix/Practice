@@ -1,28 +1,13 @@
 function makeRequest(method, url, data) {
-	if (window.XMLHttpRequest) {
-		var httpRequest = new XMLHttpRequest();
-	}
-	else if (window.ActiveXObject) {
-		try {
-			httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-		} 
-		catch (e) {
-			try {
-				httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-			} 
-			catch (e) {}
-		}
-	}
-	if (!httpRequest) {
-		alert('Giving up :( Cannot create an XMLHTTP instance');
-			return false;
-		}
-
-	httpRequest.open(method, url, false);
-	httpRequest.setRequestHeader('Content-Type', 'application/json');
-	httpRequest.send(data);
-	var response = httpRequest.responseText;
-	return response;
+	var response = $.ajax({
+		async: false,
+		url: url,
+		method: method,
+		data: data,
+		dataType: "text",
+		contentType:"application/json",
+	});
+	return response.responseText;
 }
 
 function createList (id, elementValue, checkBoxState) {
