@@ -1,25 +1,24 @@
 var backend = {
 	deleteTaskOnBackend : function(id) {
-		makeRequest('DELETE', url + "/" + id, null); 
+		makeRequest('DELETE', this.url + "/" + id, null); 
 	},
 	modifyTaskOnBackend : function(id, checkBoxState) {
 		dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
-		makeRequest('PUT', url + "/" + id, dataToSent);
+		makeRequest('PUT', this.url + "/" + id, dataToSent);
 	},
 	getAllTasksFromBackend : function() {
-		var response = makeRequest('GET', url, null);
+		var response = makeRequest('GET', this.url, null);
 		var tasks = JSON.parse(response).tasks;
 		return tasks;
 	},
 	createTaskOnBackend : function(taskValue) {
 		var dataToSent = JSON.stringify({"text":taskValue, "done":false});
-		var response = makeRequest('POST', url, dataToSent);
+		var response = makeRequest('POST', this.url, dataToSent);
 		var newTask = JSON.parse(response);
 		return newTask;
-	}
+	},
+	url : 'http://localhost:5000/api/todos'
 }
-
-var url = 'http://localhost:5000/api/todos'
 
 function makeRequest(method, url, data) {
 	var response = $.ajax({
