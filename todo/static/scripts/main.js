@@ -61,12 +61,16 @@ function createList (id, taskValue, checkBoxState) {
 
 	function deleteTask() {
 		task.parentNode.removeChild(task);
-		makeRequest('DELETE', url + "/" + task.id, null);
+		deleteTaskOnBackend(task.id);
 	}
 
 	deleteButton.onclick = deleteTask;
 
 	document.getElementById('input').value = ''
+}
+
+function deleteTaskOnBackend(id){
+	makeRequest('DELETE', url + "/" + id, null); 
 }
 
 function modifyTask(id, checkBoxState) {
