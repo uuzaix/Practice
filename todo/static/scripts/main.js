@@ -1,3 +1,23 @@
+var backend = {
+	deleteTaskOnBackend : function(id) {
+		makeRequest('DELETE', url + "/" + id, null); 
+	},
+	modifyTaskOnBackend : function(id, checkBoxState) {
+		dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
+		makeRequest('PUT', url + "/" + id, dataToSent);
+	},
+	getAllTasksFromBackend : function() {
+		var response = makeRequest('GET', url, null);
+		var tasks = JSON.parse(response).tasks;
+		return tasks;
+	},
+	createTaskOnBackend : function(taskValue) {
+		var dataToSent = JSON.stringify({"text":taskValue, "done":false});
+		var response = makeRequest('POST', url, dataToSent);
+		var newTask = JSON.parse(response);
+		return newTask;
+	}
+}
 
 var url = 'http://localhost:5000/api/todos'
 
@@ -56,12 +76,12 @@ function createTodoItem (id, taskValue, checkBoxState) {
 		else {
 			task.setAttribute("class", "normal");
 		}
-		modifyTaskOnBackend(task.id, checkBox.checked);
+		backend.modifyTaskOnBackend(task.id, checkBox.checked);
 	}
 
 	function deleteTask() {
 		task.parentNode.removeChild(task);
-		deleteTaskOnBackend(task.id);
+		backend.deleteTaskOnBackend(task.id);
 	}
 
 	deleteButton.onclick = deleteTask;
@@ -73,23 +93,8 @@ function clearInput() {
 	document.getElementById('input').value = '';
 }
 
-function deleteTaskOnBackend(id) {
-	makeRequest('DELETE', url + "/" + id, null); 
-}
-
-function modifyTaskOnBackend(id, checkBoxState) {
-	var dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
-	makeRequest('PUT', url + "/" + id, dataToSent);
-}
-
-function getAllTasksFromBackend() {
-	var response = makeRequest('GET', url, null);
-	var tasks = JSON.parse(response).tasks;
-	return tasks;
-}
-
 window.onload = function() {
-	var tasks = getAllTasksFromBackend();
+	var tasks = backend.getAllTasksFromBackend();
 	if (tasks.length > 0){ 
 		for (i=0; i < tasks.length; i++) {
 			var task = tasks[i];
@@ -98,16 +103,9 @@ window.onload = function() {
 	}
 }
 
-function createTaskOnBackend(taskValue) {
-	var dataToSent = JSON.stringify({"text":taskValue, "done":false});
-	var response = makeRequest('POST', url, dataToSent);
-	var newTask = JSON.parse(response);
-	return newTask;
-}
-
 function createTask() {
 	var taskValue = document.getElementById('input').value;
-	var newTask = createTaskOnBackend(taskValue);
+	var newTask = backend.createTaskOnBackend(taskValue);
 	createTodoItem(newTask.id, newTask.text, newTask.done);
 }
 
