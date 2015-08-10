@@ -28,7 +28,7 @@ function createDeleteButton() {
 	return deleteButton;
 }
 
-function createList (id, taskValue, checkBoxState) {
+function createTodoItem (id, taskValue, checkBoxState) {
 	var list = document.getElementById('todo_list');
 	var task = document.createElement("li");
 	task.id = id;
@@ -56,7 +56,7 @@ function createList (id, taskValue, checkBoxState) {
 		else {
 			task.setAttribute("class", "normal");
 		}
-		modifyTask(task.id, checkBox.checked);
+		modifyTaskOnBackend(task.id, checkBox.checked);
 	}
 
 	function deleteTask() {
@@ -66,14 +66,18 @@ function createList (id, taskValue, checkBoxState) {
 
 	deleteButton.onclick = deleteTask;
 
-	document.getElementById('input').value = ''
+	clearInput();
 }
 
-function deleteTaskOnBackend(id){
+function clearInput() {
+	document.getElementById('input').value = '';
+}
+
+function deleteTaskOnBackend(id) {
 	makeRequest('DELETE', url + "/" + id, null); 
 }
 
-function modifyTask(id, checkBoxState) {
+function modifyTaskOnBackend(id, checkBoxState) {
 	var dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
 	makeRequest('PUT', url + "/" + id, dataToSent);
 }
@@ -84,12 +88,12 @@ function getAllTasksFromBackend() {
 	return tasks;
 }
 
-window.onload = function(){
+window.onload = function() {
 	var tasks = getAllTasksFromBackend();
 	if (tasks.length > 0){ 
 		for (i=0; i < tasks.length; i++) {
 			var task = tasks[i];
-			createList(task.id, task.text, task.done);
+			createTodoItem(task.id, task.text, task.done);
 		}
 	}
 }
@@ -101,10 +105,10 @@ function createTaskOnBackend(taskValue) {
 	return newTask;
 }
 
-function createTask(){
+function createTask() {
 	var taskValue = document.getElementById('input').value;
 	var newTask = createTaskOnBackend(taskValue);
-	createList(newTask.id, newTask.text, newTask.done);
+	createTodoItem(newTask.id, newTask.text, newTask.done);
 }
 
 var addButton = document.getElementById("addButton");
