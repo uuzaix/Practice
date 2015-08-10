@@ -90,11 +90,16 @@ window.onload = function(){
 	}
 }
 
-function createTask() {
-	var input = document.getElementById('input').value;
-	var dataToSent = JSON.stringify({"text":input, "done":false});
+function createTaskOnBackend(taskValue) {
+	var dataToSent = JSON.stringify({"text":taskValue, "done":false});
 	var response = makeRequest('POST', url, dataToSent);
 	var newTask = JSON.parse(response);
+	return newTask;
+}
+
+function createTask(){
+	var taskValue = document.getElementById('input').value;
+	var newTask = createTaskOnBackend(taskValue);
 	createList(newTask.id, newTask.text, newTask.done);
 }
 
