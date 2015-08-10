@@ -74,9 +74,14 @@ function modifyTask(id, checkBoxState) {
 	makeRequest('PUT', url + "/" + id, dataToSent);
 }
 
-function getAllTasks() {
+function getAllTasksFromBackend() {
 	var response = makeRequest('GET', url, null);
 	var tasks = JSON.parse(response).tasks;
+	return tasks;
+}
+
+window.onload = function(){
+	var tasks = getAllTasksFromBackend();
 	if (tasks.length > 0){ 
 		for (i=0; i < tasks.length; i++) {
 			var task = tasks[i];
@@ -84,8 +89,6 @@ function getAllTasks() {
 		}
 	}
 }
-
-window.onload = getAllTasks();
 
 function createTask() {
 	var input = document.getElementById('input').value;
