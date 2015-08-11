@@ -1,35 +1,36 @@
 var backend = {
+	url : 'http://localhost:5000/api/todos',
+
+	makeRequest : function(method, url, data) {
+		var response = $.ajax({
+			async: false,
+			url: url,
+			method: method,
+			data: data,
+			dataType: "text",
+			contentType:"application/json",
+		});
+		return response.responseText;
+	},
+
 	deleteTask : function(id) {
-		makeRequest('DELETE', this.url + "/" + id, null); 
+		this.makeRequest('DELETE', this.url + "/" + id, null); 
 	},
 	modifyTask : function(id, checkBoxState) {
 		dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
-		makeRequest('PUT', this.url + "/" + id, dataToSent);
+		this.makeRequest('PUT', this.url + "/" + id, dataToSent);
 	},
 	getAllTasks : function() {
-		var response = makeRequest('GET', this.url, null);
+		var response = this.makeRequest('GET', this.url, null);
 		var tasks = JSON.parse(response).tasks;
 		return tasks;
 	},
 	createTask : function(taskValue) {
 		var dataToSent = JSON.stringify({"text":taskValue, "done":false});
-		var response = makeRequest('POST', this.url, dataToSent);
+		var response = this.makeRequest('POST', this.url, dataToSent);
 		var newTask = JSON.parse(response);
 		return newTask;
-	},
-	url : 'http://localhost:5000/api/todos'
-}
-
-function makeRequest(method, url, data) {
-	var response = $.ajax({
-		async: false,
-		url: url,
-		method: method,
-		data: data,
-		dataType: "text",
-		contentType:"application/json",
-	});
-	return response.responseText;
+	}
 }
 
 function createCheckBox(checkBoxState) {
