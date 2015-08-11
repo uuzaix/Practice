@@ -1,17 +1,17 @@
 var backend = {
-	deleteTaskOnBackend : function(id) {
+	deleteTask : function(id) {
 		makeRequest('DELETE', this.url + "/" + id, null); 
 	},
-	modifyTaskOnBackend : function(id, checkBoxState) {
+	modifyTask : function(id, checkBoxState) {
 		dataToSent = JSON.stringify({"id":id, "done":checkBoxState});
 		makeRequest('PUT', this.url + "/" + id, dataToSent);
 	},
-	getAllTasksFromBackend : function() {
+	getAllTasks : function() {
 		var response = makeRequest('GET', this.url, null);
 		var tasks = JSON.parse(response).tasks;
 		return tasks;
 	},
-	createTaskOnBackend : function(taskValue) {
+	createTask : function(taskValue) {
 		var dataToSent = JSON.stringify({"text":taskValue, "done":false});
 		var response = makeRequest('POST', this.url, dataToSent);
 		var newTask = JSON.parse(response);
@@ -75,12 +75,12 @@ function createTodoItem (id, taskValue, checkBoxState) {
 		else {
 			task.setAttribute("class", "normal");
 		}
-		backend.modifyTaskOnBackend(task.id, checkBox.checked);
+		backend.modifyTask(task.id, checkBox.checked);
 	}
 
 	function deleteTask() {
 		task.parentNode.removeChild(task);
-		backend.deleteTaskOnBackend(task.id);
+		backend.deleteTask(task.id);
 	}
 
 	deleteButton.onclick = deleteTask;
@@ -93,7 +93,7 @@ function clearInput() {
 }
 
 window.onload = function() {
-	var tasks = backend.getAllTasksFromBackend();
+	var tasks = backend.getAllTasks();
 	if (tasks.length > 0){ 
 		for (i=0; i < tasks.length; i++) {
 			var task = tasks[i];
@@ -104,7 +104,7 @@ window.onload = function() {
 
 function createTask() {
 	var taskValue = document.getElementById('input').value;
-	var newTask = backend.createTaskOnBackend(taskValue);
+	var newTask = backend.createTask(taskValue);
 	createTodoItem(newTask.id, newTask.text, newTask.done);
 }
 
