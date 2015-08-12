@@ -1,4 +1,4 @@
-var backend = {
+var restBackend = {
 	url : 'http://localhost:5000/api/todos',
 
 	makeRequest : function(method, url, data) {
@@ -32,6 +32,8 @@ var backend = {
 		return newTask;
 	}
 }
+
+var backend = restBackend;
 
 function createCheckBox(checkBoxState) {
 	var checkBox = document.createElement("input");
