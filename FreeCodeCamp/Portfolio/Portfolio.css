@@ -1,0 +1,25 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+.pad-section {
+	padding: 50px 0;
+}
+
+#home {
+	background: url(background1.jpg) no-repeat center center fixed;
+	display: table;
+	height: 100%;
+	position: relative;
+	width: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+.text-vcenter {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
