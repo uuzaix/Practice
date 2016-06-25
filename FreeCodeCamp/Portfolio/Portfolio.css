@@ -1,7 +1,7 @@
 html, body {
 	height: 100%;
 	width: 100%;
-	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family:Opensans,Helvetica,Arial,sans-serif;
 	font-size: 20px;
 }
 
@@ -24,11 +24,13 @@ html, body {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
+	color: #404040;
 }
 
 .text-vcenter h1 {
+	color: #404040;
 	font-size: 4.5em;
-	font-weight: 700;
+	font-weight: 500;
 	margin: 0;
 	padding: 0;
 }
