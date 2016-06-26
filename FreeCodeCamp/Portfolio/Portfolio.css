@@ -1,36 +1,67 @@
 html, body {
-	height: 100%;
-	width: 100%;
-	font-family:Opensans,Helvetica,Arial,sans-serif;
-	font-size: 20px;
+    height: 100%;
+    width: 100%;
+    font-family:Opensans,Helvetica,Arial,sans-serif;
+    font-size: 20px;
 }
 
 .pad-section {
-	padding: 50px 0;
+    padding: 50px 0;
 }
 
 #home {
-	background: url(background1.jpg) no-repeat center center fixed;
-	display: table;
-	height: 100%;
-	position: relative;
-	width: 100%;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+    /*background: url(background1.jpg) no-repeat center center fixed;*/
+    display: table;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #80dfff;
+/*  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
 }
 .text-vcenter {
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
-	color: #404040;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: #404040;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-small {
+    font-size: 20%;
+    color: #006080;
+    vertical-align: middle;
 }
 
 .text-vcenter h1 {
-	color: #404040;
-	font-size: 4.5em;
-	font-weight: 500;
-	margin: 0;
-	padding: 0;
+    font-size: 3.5em;
+    font-weight: 200;
+}
+
+.text-vcenter h2 {
+    font-size: 2.5em;
+    font-weight: 200;
+}
+
+#about {
+    background-color: #99e6ff;
+}
+
+.intro_list li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .5em;
+    font-size: 2.0em;
+    font-weight: 200;
+}
+
+.intro_list li:before {
+    content: '\00B7';
+    margin-right: .5em;
+}
+.intro_list li:first-child:before {
+    content: none;
 }
