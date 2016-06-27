@@ -30,12 +30,6 @@ html, body {
     padding: 0;
 }
 
-.custom-small {
-    font-size: 20%;
-    color: #006080;
-    vertical-align: middle;
-}
-
 .text-vcenter h1 {
     font-size: 3.5em;
     font-weight: 200;
@@ -64,4 +58,16 @@ html, body {
 }
 .intro_list li:first-child:before {
     content: none;
+}
+
+.portfolio-btn {
+    background-color: #80dfff; 
+    color: #404040;
+    text-transform: uppercase;
+}
+
+#custom-fa {
+    font-size: 70%;
+    vertical-align: middle;
+    margin: 0 .5em 0 0.5em;
 }
