@@ -5,21 +5,39 @@ html, body {
     font-size: 20px;
 }
 
-.pad-section {
-    padding: 50px 0;
-}
-
 #home {
-    /*background: url(background1.jpg) no-repeat center center fixed;*/
+    /*background: url(green_dust_scratch.png)  center center fixed;*/
     display: table;
     position: relative;
     height: 100%;
     width: 100%;
-    background-color: #80dfff;
+    background-color: #BFD8D2;
 /*  -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;*/
+}
+
+#about {
+    background-color: #DCB239;
+}
+
+#contact {
+    background-color: #DF744A;
+}
+
+#custom-fa {
+    font-size: 70%;
+    vertical-align: middle;
+    margin: 0 .5em 0 0.5em;
+}
+
+/*#page-top {
+    background-color: #DCC7AA;
+}*/
+
+.pad-section {
+    padding: 50px 0;
 }
 .text-vcenter {
     display: table-cell;
@@ -40,10 +58,6 @@ html, body {
     font-weight: 200;
 }
 
-#about {
-    background-color: #99e6ff;
-}
-
 .intro_list li {
     display: inline-block;
     vertical-align: middle;
@@ -56,18 +70,14 @@ html, body {
     content: '\00B7';
     margin-right: .5em;
 }
+
 .intro_list li:first-child:before {
     content: none;
 }
 
 .portfolio-btn {
-    background-color: #80dfff; 
+    /*background-color: #F7882F; */
     color: #404040;
     text-transform: uppercase;
 }
 
-#custom-fa {
-    font-size: 70%;
-    vertical-align: middle;
-    margin: 0 .5em 0 0.5em;
-}
