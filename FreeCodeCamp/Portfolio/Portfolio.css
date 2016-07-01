@@ -102,3 +102,12 @@ html, body {
     text-transform: uppercase;
 }
 
+.portfolio-pic {
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+
+.portfolio-pic:hover {
+    border: 1px solid #777;
+}
+
