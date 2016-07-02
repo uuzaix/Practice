@@ -97,7 +97,6 @@ html, body {
 }
 
 .portfolio-btn {
-    /*background-color: #F7882F; */
     color: #404040;
     text-transform: uppercase;
 }
@@ -110,4 +109,48 @@ html, body {
 .portfolio-pic:hover {
     border: 1px solid #777;
 }
+
+/*#menu {
+    background-color: #BFD8D2;
+}*/
+
+.navbar-default {
+    background-color: #BFD8D2;
+    border-color: #BFD8D2;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  color: #000000;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fbfbfb;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #fbfbfb;
+}
+
+/*.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fbfbfb;
+  background-color: #df744a;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #fbfbfb;
+  background-color: #df744a;
+}
+.navbar-default .navbar-toggle {
+  border-color: #df744a;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #df744a;
+}*/
+
 
