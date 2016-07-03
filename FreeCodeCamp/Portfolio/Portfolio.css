@@ -49,7 +49,7 @@ html, body {
 #custom-fa {
     font-size: 70%;
     vertical-align: middle;
-    margin: 0 .5em 0 0.5em;
+    margin: 0 .5em 0 .5em;
 }
 
 .pad-section {
@@ -65,7 +65,7 @@ html, body {
     padding: 0;
 }
 
-.text-vcenter h1 {
+.title {
     font-size: 3.5em;
     font-weight: 200;
 }
@@ -132,4 +132,11 @@ html, body {
   background-color: #df744a;
 }
 
-
+@media (max-width: 600px) {
+    #custom-fa {
+      display: none;
+  }
+    .title {
+      font-size: 2em;
+  }
+}
