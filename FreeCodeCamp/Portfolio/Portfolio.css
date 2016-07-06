@@ -3,37 +3,25 @@ html, body {
     width: 100%;
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
+    color: #404040;
 }
 
 #home {
-    /*background: url(green_dust_scratch.png)  center center fixed;*/
     display: table;
     position: relative;
     height: 100%;
     width: 100%;
     background-color: #BFD8D2;
-/*  -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
 }
 
 #about {
     background-color: #DCB239;
-    /*display: table;*/
-    /*position: relative;*/
-    height: 50%;
+    min-height: 50%;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    text-align: left;
     text-indent: 50px;
     line-height: 1.8;
-}
-
-#portfolio {
-    /*background-color: #BFD8D2;*/
 }
 
 #contact {
@@ -56,30 +44,34 @@ html, body {
     padding: 50px 0;
 }
 
+.text-center {
+    text-align: center;
+    vertical-align: middle;
+    text-indent: 0px;
+}
+
 .text-vcenter {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    color: #404040;
     margin: 0;
     padding: 0;
 }
 
 .title {
-    font-size: 3.5em;
-    font-weight: 200;
+    font-size: 2em;
 }
 
-.text-vcenter h2 {
-    font-size: 2.5em;
+.intro {
+    font-size: 3.5em;
     font-weight: 200;
 }
 
 .intro-list li {
     display: inline-block;
     vertical-align: middle;
-    margin-left: .5em;
     font-size: 2.0em;
+    margin-right: .5em;
     font-weight: 200;
 }
 
@@ -113,51 +105,58 @@ html, body {
 
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav > li > a {
-  color: #000000;
+    color: #000000;
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #fbfbfb;
+    color: #fbfbfb;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #fbfbfb;
+    color: #fbfbfb;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #fbfbfb;
-  background-color: #df744a;
+    color: #fbfbfb;
+    background-color: #df744a;
 }
 
 @media (max-width: 1100px) {
-  #custom-fa {
-    display: none;
-  }
-/*  .title {
-    font-size: 2em;
-  }*/
+    #custom-fa {
+        display: none;
+    }
     div span:nth-of-type(2) {
         display: block;
     }
 }
 
 @media (max-width: 700px) {
-  #custom-fa {
-    display: none;
-  }
-  .title {
-    font-size: 2em;
-  }
+    #custom-fa {
+        display: none;
+    }
+    #about-content{
+        font-size: 0.7em;
+    }
+
+    .intro {
+        font-size: 2em;
+    }
     .intro-list li{
-    font-size: 1em;
-  }
+        font-size: 1em;
+    }
+    .title {
+        font-size: 1.1em;
+    }
     div span:nth-of-type(2) {
         display: block;
     }
     .portfolio-btn {
         font-size: .75em;
+    }
+    .pad-section {
+        padding: 20px 0;
     }
 }
