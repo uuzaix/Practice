@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Quote-Machine</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="quotes_machine.css"> -->
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <script>
+    $(document).ready(function() {
+      $("#nextQuote").on("click", function() {
+        $.getJSON("quotes.json", function (json){
+          var ind = Math.floor(Math.random()*json.quotes.length);
+          console.log(ind);
+          $(".quoteContent").html("<blockquote><p>" + json.quotes[ind].quote +"</p><footer>" + json.quotes[ind].author + "</footer></blockquote>");
+          
+        });
+      });
+    })
+  </script>
+
+<div class="container-fluid">
+  <div class="row text-center">
+    <h1>Random clever Quote</h1>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-12 quoteContent">
+    BBBBBB
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-12">
+      <button id="nextQuote" class="btn btn-default">Next Quote</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<!-- font-family: 'Lato', sans-serif; -->
