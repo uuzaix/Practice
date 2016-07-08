@@ -8,19 +8,36 @@
   <!-- <link rel="stylesheet" href="quotes_machine.css"> -->
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/0694bcade9.js"></script>
 </head>
 <body>
   <script>
-    $(document).ready(function() {
-      $("#nextQuote").on("click", function() {
-        $.getJSON("quotes.json", function (json){
-          var ind = Math.floor(Math.random()*json.quotes.length);
-          console.log(ind);
-          $(".quoteContent").html("<blockquote><p>" + json.quotes[ind].quote +"</p><footer>" + json.quotes[ind].author + "</footer></blockquote>");
-          
-        });
+  var quoteNumber = -1;
+  var currentQuote;
+  var currentAuthor;
+    function getNextQuote () {
+      $.getJSON("quotes.json", function (json){
+        var ind = Math.floor(Math.random()*json.quotes.length);
+        while (quoteNumber === ind) {
+          ind = Math.floor(Math.random()*json.quotes.length);
+        }
+        quoteNumber = ind;
+        currentQuote = json.quotes[ind].quote;
+        currentAuthor = json.quotes[ind].author
+        $(".quoteContent").html("<blockquote><p>" + currentQuote +"</p><footer>" + currentAuthor + "</footer></blockquote>");
       });
+    }
+    $(document).ready(function() {
+      getNextQuote();
+      $("#nextQuote").on("click", function() {
+        getNextQuote();
+      })
+      $("#tweetQuote").on("click", function() {
+        $("#tweetQuote").attr('href', 'https://twitter.com/intent/tweet?text=' + '"' + currentQuote+ '" - ' + currentAuthor)
+        ;
+      })
     })
+
   </script>
 
 <div class="container-fluid">
@@ -28,13 +45,19 @@
     <h1>Random clever Quote</h1>
   </div>
   <div class="row text-center">
-    <div class="col-xs-12 quoteContent">
-    BBBBBB
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 quoteContent">
     </div>
   </div>
   <div class="row text-center">
     <div class="col-xs-12">
-      <button id="nextQuote" class="btn btn-default">Next Quote</button>
+      <button id="nextQuote" class="btn btn-default">Another Quote</button>
+      </div>
+      <div>
+      <a id="tweetQuote" class="btn btn-lg" title="Tweet this quote!" role="button">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span></a>
     </div>
   </div>
 </div>
