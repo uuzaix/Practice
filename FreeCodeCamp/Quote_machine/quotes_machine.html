@@ -5,7 +5,7 @@
   <title>Quote-Machine</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="quotes_machine.css"> -->
+  <link rel="stylesheet" href="quotes.css">
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://use.fontawesome.com/0694bcade9.js"></script>
@@ -24,7 +24,7 @@
         quoteNumber = ind;
         currentQuote = json.quotes[ind].quote;
         currentAuthor = json.quotes[ind].author
-        $(".quoteContent").html("<blockquote><p>" + currentQuote +"</p><footer>" + currentAuthor + "</footer></blockquote>");
+        $("#quoteContent").html("<blockquote><p>" + currentQuote +"</p><footer>" + currentAuthor + "</footer></blockquote>");
       });
     }
     $(document).ready(function() {
@@ -41,11 +41,12 @@
   </script>
 
 <div class="container-fluid">
+<div class="jumbotron vertical-center">
   <div class="row text-center">
-    <h1>Random clever Quote</h1>
+    <h1 >Random Clever Quote</h1>
   </div>
   <div class="row text-center">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 quoteContent">
+    <div id="quoteContent" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
     </div>
   </div>
   <div class="row text-center">
@@ -59,6 +60,7 @@
           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
       </span></a>
     </div>
+  </div>
   </div>
 </div>
 
