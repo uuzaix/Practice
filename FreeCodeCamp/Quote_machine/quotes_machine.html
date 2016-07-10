@@ -33,7 +33,10 @@
         getNextQuote();
       })
       $("#tweetQuote").on("click", function() {
-        $("#tweetQuote").attr('href', 'https://twitter.com/intent/tweet?text=' + '"' + currentQuote+ '" - ' + currentAuthor)
+        if (currentQuote.length > 100) {
+          currentQuote = currentQuote.slice(0, 100) + "..."
+        }
+        $("#tweetQuote").attr('href', 'https://twitter.com/intent/tweet?text=' + '"' + currentQuote + '" - ' + currentAuthor)
         ;
       })
     })

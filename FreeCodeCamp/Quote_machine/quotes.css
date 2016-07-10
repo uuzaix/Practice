@@ -16,7 +16,8 @@ html, body {
   justify-content: center;
   margin: 0;
 }
-#quoteContent {
+
+.vertical-center #quoteContent {
   font-size: 8em;
   line-height: 1.8;
 }
