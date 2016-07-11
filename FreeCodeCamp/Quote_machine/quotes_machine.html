@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <title>Quote-Machine</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="quotes.css">
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -24,13 +24,22 @@
         quoteNumber = ind;
         currentQuote = json.quotes[ind].quote;
         currentAuthor = json.quotes[ind].author
-        $("#quoteContent").html("<blockquote><p>" + currentQuote +"</p><footer>" + currentAuthor + "</footer></blockquote>");
+        $("#quoteContent").html("<blockquote class='foo'><p>" + currentQuote +"</p><footer>" + currentAuthor + "</footer></blockquote>");
       });
     }
+
+var colors = ["#FFE699", "#FFDB6E", "#F4C949", "#E4B21E", "#B0870D","#A7F865", "#A0F05D", "#92DF52", "#74AD44"];
+    function selectColor () {
+      var color = colors[Math.floor(Math.random()*colors.length)];
+      $(".vertical-center").css("background-color", color);
+    }
+
     $(document).ready(function() {
       getNextQuote();
+      selectColor();
       $("#nextQuote").on("click", function() {
         getNextQuote();
+        selectColor();
       })
       $("#tweetQuote").on("click", function() {
         if (currentQuote.length > 100) {

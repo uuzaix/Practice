@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
 }
 .container-fluid {
@@ -17,7 +17,32 @@ html, body {
   margin: 0;
 }
 
-.vertical-center #quoteContent {
+/*.vertical-center #quoteContent {
   font-size: 8em;
+}*/
+
+blockquote {
+  border-left: none;
+}
+
+blockquote p {
+  font-size: 1.5em !important;
   line-height: 1.8;
+
+}
+
+blockquote:before {
+display: block;
+content: "\201C";
+font-size: 90px;
+position: absolute;
+left: -1px;
+top: -30px;
+color: #333;
+}
+
+blockquote footer {
+    display: block;
+    font-size: 1.1em;
+    color: #333;
 }
