@@ -28,7 +28,7 @@
       });
     }
 
-var colors = ["#FFE699", "#FFDB6E", "#F4C949", "#E4B21E", "#B0870D","#A7F865", "#A0F05D", "#92DF52", "#74AD44"];
+var colors = ["#FFE699", "#FFDB6E", "#F4C949", "#E4B21E", "#B0870D","#A7F865", "#A0F05D", "#92DF52", "#74AD44", "#84EFD7", "#84EFD7", "#61E3C6", "#61E3C6", "#44D4B3"];
     function selectColor () {
       var color = colors[Math.floor(Math.random()*colors.length)];
       $(".vertical-center").css("background-color", color);
@@ -52,31 +52,26 @@ var colors = ["#FFE699", "#FFDB6E", "#F4C949", "#E4B21E", "#B0870D","#A7F865", "
 
   </script>
 
-<div class="container-fluid">
-<div class="jumbotron vertical-center">
-  <div class="row text-center">
-    <h1 >Random Clever Quote</h1>
-  </div>
-  <div class="row text-center">
-    <div id="quoteContent" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-    </div>
-  </div>
-  <div class="row text-center">
-    <div class="col-xs-12">
-      <button id="nextQuote" class="btn btn-default">Another Quote</button>
+  <div class="container-fluid">
+    <div class="jumbotron vertical-center">
+      <div class="row text-center">
+        <div id="quoteContent" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        </div>
       </div>
-      <div>
-      <a id="tweetQuote" class="btn btn-lg" title="Tweet this quote!" role="button">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-      </span></a>
+      <div class="row text-center">
+        <span>
+          <a id="tweetQuote" class="btn btn-lg" title="Tweet this quote!" role="button">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span></a>
+        </span>
+        <span>
+          <button id="nextQuote" class="btn btn-info">Another Quote</button>
+        </span>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-</div>
 
 </body>
 </html>
-
-<!-- font-family: 'Lato', sans-serif; -->

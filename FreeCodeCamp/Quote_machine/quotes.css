@@ -17,10 +17,6 @@ html, body {
   margin: 0;
 }
 
-/*.vertical-center #quoteContent {
-  font-size: 8em;
-}*/
-
 blockquote {
   border-left: none;
 }
@@ -42,7 +38,17 @@ color: #333;
 }
 
 blockquote footer {
-    display: block;
     font-size: 1.1em;
     color: #333;
+}
+
+#nextQuote {
+  align: left;
+  background-color: #337ab7;
+  border: none;
+  margin: 0px 50px;
+}
+
+#tweetQuote {
+  margin: 0px 50px;
 }
