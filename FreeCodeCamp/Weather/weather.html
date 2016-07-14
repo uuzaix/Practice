@@ -17,11 +17,21 @@
       <div class="row text-center">
         <div id="" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">Weater
         </div>
+        <div id="weather">
+        </div>
       </div>
       <div class="row text-center">
         </div>
       </div>
     </div>
+<script>
+  var url = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=0e64fd19006ed36b06872f0cb94f4540";
+  window.onload = function() {
+    $.getJSON(url,function(data) {
+      console.log(data.main.temp);
+    });
+  }
 
+</script>
 </body>
 </html>
