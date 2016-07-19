@@ -73,14 +73,14 @@
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 
     function parseWeatherReasponse(url) {
-    $.getJSON(url,function(data) {
-      console.log(data.main.temp);
-      $("#temperature").text("temperature " + data.main.temp);
-      $("#name").text("Weather in  " + data.name);
-      $("#precipitation").text(data.weather[0].description);
-      $("#icon").text(data.weather[0].icon);
-    });
-  }
+      $.getJSON(url,function(data) {
+        console.log(data.main.temp);
+        $("#temperature").html("<p>temperature " + Math.round(data.main.temp) + " K </p><p>temperature " + Math.round(data.main.temp -273.15) + " C</p><p>temperature " + Math.round(data.main.temp*9/5 - 459.67) + " F</p>");
+        $("#name").text("Weather in  " + data.name);
+        $("#precipitation").text(data.weather[0].description);
+        $("#icon").text(data.weather[0].icon);
+      });
+    }
   }
 
 
