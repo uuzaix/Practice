@@ -8,6 +8,7 @@
   <!-- <link rel="stylesheet" href="quotes.css"> -->
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="weather.js"></script>
   <!-- <script src="https://use.fontawesome.com/0694bcade9.js"></script> -->
 </head>
 <body>
@@ -26,64 +27,5 @@
       </div>
     </div>
   </div>
-<script>
-  // var lat;
-  // var lon;
-  // if (navigator.geolocation) {
-  //   navigator.geolocation.getCurrentPosition(function(position) {
-  //     lat = position.coords.latitude;
-  //     lon = position.coords.longitude;
-  //   });
-  // }
-  // else {
-  //   console.log('Geolocation is not supported for this Browser/OS version yet.');
-  // }
-  // var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=0e64fd19006ed36b06872f0cb94f4540";
-
-
-  window.onload = function() {
-
-    var startPos;
-    var lat;
-    var lon;
-    var url;
-
-    var geoOptions = {
-       timeout: 10 * 1000
-    }
-
-    var geoSuccess = function(position) {
-      startPos = position;
-      lat = startPos.coords.latitude;
-      lon = startPos.coords.longitude;
-      console.log(lat, lon);
-      url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=0e64fd19006ed36b06872f0cb94f4540";
-      console.log(url);
-      parseWeatherReasponse(url);
-    };
-    var geoError = function(error) {
-      console.log('Error occurred. Error code: ' + error.code);
-      // error.code can be:
-      //   0: unknown error
-      //   1: permission denied
-      //   2: position unavailable (error response from location provider)
-      //   3: timed out
-    };
-
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-
-    function parseWeatherReasponse(url) {
-      $.getJSON(url,function(data) {
-        console.log(data.main.temp);
-        $("#temperature").html("<p>temperature " + Math.round(data.main.temp) + " K </p><p>temperature " + Math.round(data.main.temp -273.15) + " C</p><p>temperature " + Math.round(data.main.temp*9/5 - 459.67) + " F</p>");
-        $("#name").text("Weather in  " + data.name);
-        $("#precipitation").text(data.weather[0].description);
-        $("#icon").text(data.weather[0].icon);
-      });
-    }
-  }
-
-
-</script>
 </body>
 </html>
