@@ -33,10 +33,10 @@ window.onload = function() {
     $.getJSON(url,function(data) {
       console.log(data.main.temp);
       var currentTemp = [Math.round(data.main.temp -273.15), "C"];
-      $("#name").text("Weather in  " + data.name);
-      $("#temperature").text(currentTemp.join(" "));
-      $("#weather-type").text(data.weather[0].main);
-      $("#precipitation").text(data.weather[0].description);
+      $(".location").text("Current weather in  " + data.name);
+      $("#temperature").text(currentTemp.join(" \u00B0"));
+      // $("#weather-type").text(data.weather[0].main);
+      $("#precipitation").text(data.weather[0].description.charAt(0).toUpperCase()+data.weather[0].description.slice(1));
       $("#icon").prop('src', "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
       $("#icon").text(data.weather[0].icon);
       $("#temperature").click(function() {
@@ -46,7 +46,7 @@ window.onload = function() {
         else {
           currentTemp = [Math.round(data.main.temp -273.15), "C"];
         }
-          $("#temperature").text(currentTemp.join(" "));
+          $("#temperature").text(currentTemp.join(" \u00B0"));
         });
       });
     }

@@ -1,0 +1,22 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+.table_container {
+	display: table;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #BCE582;
+}
+.weather_container {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.location {
+	font-size: 3em;
+}
+.measurments_text {
+	font-size: 2em;
+}
