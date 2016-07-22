@@ -7,7 +7,7 @@ html, body {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: #BCE582;
+	background-color: #67AECA;
 }
 .weather_container {
 	display: table-cell;
@@ -19,4 +19,10 @@ html, body {
 }
 .measurments_text {
 	font-size: 2em;
+}
+#icon {
+	height: 100px;
+}
+#temperature {
+	cursor: pointer;
 }

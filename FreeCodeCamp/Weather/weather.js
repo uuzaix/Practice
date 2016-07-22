@@ -31,10 +31,11 @@ window.onload = function() {
 
   function parseWeatherReasponse(url) {
     $.getJSON(url,function(data) {
-      console.log(data.main.temp);
+      console.log(data.main.pressure);
       var currentTemp = [Math.round(data.main.temp -273.15), "C"];
       $(".location").text("Current weather in  " + data.name);
       $("#temperature").text(currentTemp.join(" \u00B0"));
+      $("#pressure").text("Pressure: " + data.main.pressure +" hPa");
       // $("#weather-type").text(data.weather[0].main);
       $("#precipitation").text(data.weather[0].description.charAt(0).toUpperCase()+data.weather[0].description.slice(1));
       $("#icon").prop('src', "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
