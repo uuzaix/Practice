@@ -1,13 +1,13 @@
 html, body {
 	height: 100%;
 	width: 100%;
+	font-family: 'Gloria Hallelujah', cursive;
 }
 .table_container {
 	display: table;
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: #67AECA;
 }
 .weather_container {
 	display: table-cell;
@@ -25,4 +25,5 @@ html, body {
 }
 #temperature {
 	cursor: pointer;
+	color: #02558B;
 }

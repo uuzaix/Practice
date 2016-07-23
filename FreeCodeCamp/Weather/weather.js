@@ -39,7 +39,8 @@ window.onload = function() {
       // $("#weather-type").text(data.weather[0].main);
       $("#precipitation").text(data.weather[0].description.charAt(0).toUpperCase()+data.weather[0].description.slice(1));
       $("#icon").prop('src', "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
-      $("#icon").text(data.weather[0].icon);
+      // $("#icon").text(data.weather[0].icon);
+      chooseBackgroundColor(data.weather[0].icon);
       $("#temperature").click(function() {
         if (currentTemp[1] === "C") {
           currentTemp = [Math.round(data.main.temp*9/5 - 459.67), "F"];
@@ -50,6 +51,33 @@ window.onload = function() {
           $("#temperature").text(currentTemp.join(" \u00B0"));
         });
       });
+    }
+    function chooseBackgroundColor (icon) {
+      var colors = {"sun": "#FED388", "cloud": "#6BC5DF", "rain": "#7B98E1", "storm" : "#947DE3", "snow": "#FFFCEE", "mist": "#9DA8C3", "default": "#57BC90"};
+      var color;
+      switch (icon.slice(0,2)) {
+        case "01": case "02":
+          color = colors.sun;
+          break;
+        case "03": case "04":
+          color = colors.cloud;
+          break;
+        case "09": case "10":
+          color = colors.rain;
+          break;
+        case "11":
+          color = colors.storm;
+          break;
+        case "13":
+          color = colors.snow;
+          break;
+        case "50":
+          color = colors.mist;
+          break;
+        default:
+          color = colors.default;
+      }
+      $(".table_container").css("background-color", color);
     }
   }
 
