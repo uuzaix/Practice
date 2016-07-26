@@ -10,12 +10,9 @@ window.onload = function() {
       alert('Please allow popups for this website');
     }
   });
-  // $("#search-btn").submit(function() {
-  //   var dat = $("#wiki-search").val();
-  //   console.log(dat);
-  // })
-  $('#wiki-search').bind('submit', function () {
-    var elements = this.elements;
-    console.log(elements)
-  });
+  $("#form").submit(function() {
+    var dat = $("#wiki-search").val();
+    console.log(dat);
+    return false;
+  })
 }
