@@ -19,14 +19,13 @@ window.onload = function() {
       console.log(data.query.pages);
       var items = [];
       $.each (data.query.pages, function(key, value) {
-        items.push('<p><b>' + value.title + '</b></p><br><p>' + value.extract + '</p><br>');
+        items.push('<li><a href=https://en.wikipedia.org/?curid=' + value.pageid + '><p><b>' + value.title + '</b></p><br><p>' + value.extract + '</p><br></li>');
       })
-      $("#search-results").html(items.join(""));
+      $("#search-results").html('<ul>' + items.join("") + '</ul>');
     }
   });
     return false;
   });
-
 }
 
 
