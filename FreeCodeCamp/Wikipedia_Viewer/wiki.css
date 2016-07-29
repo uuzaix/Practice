@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Bitter', serif;
+  background-color: #874C62;
+}
+
+li {
+  background-color: #F7F5E6;
+  list-style-type: none;
+
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover, a:visited, a:active, a:-webkit-any-link {
+  text-decoration: none;
+  color: black;
+}
