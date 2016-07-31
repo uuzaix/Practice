@@ -1,7 +1,9 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'Bitter', serif;
+  font-family: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
+  font-size: 18px;
+  line-height: 1.4em;
   background-color: #874C62;
 }
 
@@ -23,6 +25,9 @@ a:hover, a:visited, a:active, a:-webkit-any-link {
   color: black;
 }
 
+.btn {
+    font-size: 18px;
+}
 .search {
   vertical-align: middle;
   text-align: center;

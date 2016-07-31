@@ -1,5 +1,5 @@
 window.onload = function() {
-  $(".wiki-btn").click(function(){
+  $("#wiki-btn").click(function(){
     var win = window.open("https://en.wikipedia.org/wiki/Special:Random", '_blank');
     if (win) {
       console.log("aaa");
@@ -19,11 +19,12 @@ window.onload = function() {
       console.log(data.query.pages);
       var items = [];
       $.each (data.query.pages, function(key, value) {
-        items.push('<li><a href=https://en.wikipedia.org/?curid=' + value.pageid + '><p><b>' + value.title + '</b></p><br><p>' + value.extract + '</p><br></li>');
+        items.push('<a href=https://en.wikipedia.org/?curid=' + value.pageid + '><li><p><b>' + value.title + '</b></p><br><p>' + value.extract + '</p><br></li>');
       })
       $("#search-results").html('<ul>' + items.join("") + '</ul>');
     }
   });
+    $("#wiki-search").val("");
     return false;
   });
 }

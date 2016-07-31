@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <title>Quote-Machine</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
   <link rel="stylesheet" href="wiki.css">
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -14,9 +13,9 @@
 <body>
   <div class="table_container">
     <div class="search">
-    <button class="btn btn-warning wiki-btn">Random Wikipedia Article</button><br>
+    <button id="wiki-btn" class="btn btn-warning">Random Wikipedia Article</button><br>
       <form id="form"><input id="wiki-search" type="text">
-        <input id="search-btn" type="submit" class="btn-warning" value="Search"></form>
+        <button id="search-btn" class="btn btn-warning" type="submit">Search</button></form>
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
