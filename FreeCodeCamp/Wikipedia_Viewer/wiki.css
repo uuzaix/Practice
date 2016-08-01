@@ -7,17 +7,17 @@ html, body {
   background-color: #874C62;
 }
 
-
 li {
   background-color: #F7F5E6;
   list-style-type: none;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   padding: 20px 20px 0px 20px;
+  border-radius: 4px;
 }
 
 li:hover {
-    border-left: 5px solid #f0ad4e;
-    margin-left: -5px;
+  border-left: 5px solid #f0ad4e;
+  margin-left: -5px;
 }
 
 a, a:visited, a:hover, a:active, a:-webkit-any-link {
@@ -25,9 +25,9 @@ a, a:visited, a:hover, a:active, a:-webkit-any-link {
   color: black;
 }
 
-input[type=text] {
-    border: 2px solid #f0ad4e;
-    border-radius: 4px;
+input {
+  border: 2px solid #f0ad4e;
+  border-radius: 4px;
 }
 
 input:focus {
@@ -35,7 +35,11 @@ input:focus {
 }
 
 .btn {
-    font-size: 18px;
+  font-size: 18px;
+}
+
+.btn:focus, .btn:active, .btn:visited {
+  outline-style: none;
 }
 
 .search {
