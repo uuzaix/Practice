@@ -19,7 +19,7 @@ window.onload = function() {
       console.log(data.query.pages);
       var items = [];
       $.each (data.query.pages, function(key, value) {
-        items.push('<a href=https://en.wikipedia.org/?curid=' + value.pageid + '><li><p><b>' + value.title + '</b></p><br><p>' + value.extract + '</p><br></li>');
+        items.push('<a href=https://en.wikipedia.org/?curid=' + value.pageid + ' target="_blank"><li><p><b>' + value.title + '</b></p><br><p>' + value.extract + '</p><br></li>');
       })
       $("#search-results").html('<ul>' + items.join("") + '</ul>');
     }
