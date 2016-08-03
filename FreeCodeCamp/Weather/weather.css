@@ -1,29 +1,34 @@
 html, body {
-	height: 100%;
-	width: 100%;
-	font-family: 'Gloria Hallelujah', cursive;
+  height: 100%;
+  width: 100%;
+  font-family: 'Gloria Hallelujah', cursive;
 }
+
 .table_container {
-	display: table;
-	position: absolute;
-	height: 100%;
-	width: 100%;
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
+
 .weather_container {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 .location {
-	font-size: 3em;
+  font-size: 3em;
 }
+
 .measurments_text {
-	font-size: 2em;
+  font-size: 2em;
 }
+
 #icon {
-	height: 100px;
+  height: 80px;
 }
-#temperature {
-	cursor: pointer;
-	color: #02558B;
+
+#grads {
+  cursor: pointer;
+  color: #02558B;
 }

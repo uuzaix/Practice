@@ -9,15 +9,14 @@
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="weather.js"></script>
-  <!-- <script src="https://use.fontawesome.com/0694bcade9.js"></script> -->
 </head>
 <body>
   <div class="table_container">
     <div class="weather_container">
     <div class="location"></div>
-      <p class="measurments_text">Temperature: <b><span id="temperature"></span></b></p>
-      <p class="measurments_text" id="pressure"></p>
-      <!-- <div id="weather-type"></div> -->
+      <p id="temperature" class="measurments_text">Loading...</p>
+      <p id="pressure" class="measurments_text"></p>
+      <div id="humidity" class="measurments_text"></div>
       <div id="precipitation" class="measurments_text"></div>
       <div><image id="icon"></div>
     </div>
