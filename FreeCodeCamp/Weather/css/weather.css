@@ -16,6 +16,12 @@ html, body {
   vertical-align: middle;
   text-align: center;
 }
+
+#footers {
+  display: table-footer-group;
+  text-align: center;
+}
+
 .location {
   font-size: 3em;
 }
@@ -25,7 +31,8 @@ html, body {
 }
 
 #icon {
-  height: 80px;
+  font-size: 5em;
+  margin: 20px;
 }
 
 #grads {

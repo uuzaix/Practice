@@ -31,7 +31,6 @@ window.onload = function() {
   function parseWeatherReasponse(url) {
     $.getJSON(url, function(data) {
       console.log(data);
-      // console.log(data.current_observation.icon_url);
       var currentTemp = [data.current_observation.temp_c, "C"];
       $(".location").text("Current weather in  " + data.current_observation.display_location.full);
       $("#temperature").html('Temperature: <b><span id="grads"></span></b>');
@@ -39,7 +38,7 @@ window.onload = function() {
       $("#pressure").text("Pressure: " + data.current_observation.pressure_mb +" mB");
       $("#precipitation").text(data.current_observation.weather);
       $("#humidity").text("Relative humidity: " + data.current_observation.relative_humidity);
-      $("#icon").prop('src',  "http://icons.wxug.com/i/c/i/" + data.current_observation.icon + ".gif");
+      $("#icon").html("<i class='wi wi-wu-" + data.current_observation.icon + "'></i>");
       chooseBackgroundColor(data.current_observation.weather.split(" "));
       $("#grads").click(function() {
         if (currentTemp[1] === "C") {

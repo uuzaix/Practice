@@ -5,7 +5,8 @@
   <title>Quote-Machine</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="weather.css">
+  <link rel="stylesheet" href="css/weather-icons.min.css">
+  <link rel="stylesheet" href="css/weather.css">
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="weather.js"></script>
@@ -13,13 +14,17 @@
 <body>
   <div class="table_container">
     <div class="weather_container">
-    <div class="location"></div>
+      <div class="location"></div>
       <p id="temperature" class="measurments_text">Loading...</p>
       <p id="pressure" class="measurments_text"></p>
       <div id="humidity" class="measurments_text"></div>
       <div id="precipitation" class="measurments_text"></div>
-      <div><image id="icon"></div>
+      <!-- <div><image id="icon"></image></div> -->
+      <div id="icon"></div>
     </div>
+      <div id="footers">
+        <p>Created with <a href="https://www.wunderground.com/" target="_blank">Weather Underground</a> and <a href="https://erikflowers.github.io" target="_blank">Weather Icons</a></p>
+      </div>
   </div>
 </body>
 </html>
