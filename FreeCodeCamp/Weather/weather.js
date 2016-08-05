@@ -39,7 +39,7 @@ window.onload = function() {
       $("#precipitation").text(data.current_observation.weather);
       $("#humidity").text("Relative humidity: " + data.current_observation.relative_humidity);
       $("#icon").html("<i class='wi wi-wu-" + data.current_observation.icon + "'></i>");
-      chooseBackgroundColor(data.current_observation.weather.split(" "));
+      chooseBackgroundColor(data.current_observation.icon);
       $("#grads").click(function() {
         if (currentTemp[1] === "C") {
           currentTemp = [data.current_observation.temp_f, "F"];
@@ -54,23 +54,23 @@ window.onload = function() {
     function chooseBackgroundColor (weather) {
       var colors = {"sun": "#FED388", "cloud": "#6BC5DF", "rain": "#7B98E1", "storm" : "#947DE3", "snow": "#FFFCEE", "mist": "#9DA8C3", "default": "#57BC90"};
       var color;
-      switch (weather[weather.length-1]) {
-        case "Clear": case "Sunny":
+      switch (weather) {
+        case "clear": case "mostlysunny": case "sunny": case "partlysunny":
           color = colors.sun;
           break;
-        case "Cloudy":
+        case "partlycloudy": case "mostlycloudy": case "cloudy":
           color = colors.cloud;
           break;
-        case "Rain": case "Sleet":
+        case "rain": case "sleet": case "chancerain": case "chancesleet":
           color = colors.rain;
           break;
-        case "Thunderstorm": case "Flurries":
+        case "chancetstorms": case "chanceflurries": case "flurries": case "tstorms":
           color = colors.storm;
           break;
-        case "Snow":
+        case "chancesnow": case "snow":
           color = colors.snow;
           break;
-        case "Hazy":
+        case "hazy": case "fog":
           color = colors.mist;
           break;
         default:
