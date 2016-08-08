@@ -12,13 +12,14 @@ li {
   list-style-type: none;
   margin-bottom: 10px;
   padding: 20px 20px 0px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 li:hover {
   border-left: 5px solid #3CC47C;
   margin-left: -5px;
 }
+
 
 a, a:visited, a:hover, a:active, a:-webkit-any-link {
   text-decoration: none;
@@ -35,14 +36,12 @@ input {
   cursor: pointer;
   background: #3CC47C;
 }
-/*input, .search-icon {    color: white;    }*/
 
 input:hover {
-  color: white;
-  background: rgb(200, 200, 200);
-  box-shadow: 0 0 0 5px rgb(61, 71, 82);
+  color: #fff;
+  background: #c8c8c8;
+  box-shadow: 0 0 0 5px #3d4752;
 }
-/*input:hover, .search-icon {    color: white;    }*/
 
 input:focus {
   transition-property: width, border-radius, background;
@@ -50,14 +49,13 @@ input:focus {
   border: none;
   outline: none;
   box-shadow: none;
-  padding-left: 15px;
+  padding: 1px 30px 1px 15px;
   cursor: text;
   width: 300px;
   border-radius: auto;
-  background: rgb(235, 235, 235);
+  background: #F7F5E6;
   color: black;
 }
-/*input:focus .search-icon {    color: black;    }*/
 
 input:not(:focus) {
   text-indent:-5000px;
@@ -66,8 +64,17 @@ input:not(:focus) {
 .search-icon {
   position: relative;
   left: -30px;
-  color: white;
+  color: #fff;
   cursor: pointer;
+}
+
+input:focus  + label > .search-icon {
+  color: #3CC47C;
+}
+
+.text {
+  color: #F7F5E6;
+  padding: 20px;
 }
 
 .btn {
@@ -83,14 +90,21 @@ input:not(:focus) {
   color: #fff;
 }
 
-.search {
+#random-btn {
+  margin: 0 0 0 25px;
+}
+
+.content {
   vertical-align: middle;
   text-align: center;
   padding: 20px;
 }
 
 #form {
-  padding: 20px;
+  display: inline;
+/*  padding: 20px;
+  height: 40px;
+  width: 40px;*/
 }
 
 
