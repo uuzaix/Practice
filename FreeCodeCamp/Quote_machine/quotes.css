@@ -2,7 +2,6 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
-
 }
 .container-fluid {
   padding: 0;
@@ -24,22 +23,21 @@ blockquote {
 blockquote p {
   font-size: 1.5em !important;
   line-height: 1.8;
-
 }
 
 blockquote:before {
-display: block;
-content: "\201C";
-font-size: 90px;
-position: absolute;
-left: -1px;
-top: -30px;
-color: #333;
+  display: block;
+  content: "\201C";
+  font-size: 90px;
+  position: absolute;
+  left: -1px;
+  top: -30px;
+  color: #333;
 }
 
 blockquote footer {
-    font-size: 1.1em;
-    color: #333;
+  font-size: 1.1em;
+  color: #333;
 }
 
 #nextQuote {
