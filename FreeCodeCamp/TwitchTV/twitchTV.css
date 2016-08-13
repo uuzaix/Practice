@@ -4,5 +4,14 @@ html, body {
   font-family: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
   font-size: 18px;
   line-height: 1.4em;
-  background-color: #874C62;
+  background-color: #D5D5D5;
+}
+.logo {
+  height: 40px;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+#title {
+  text-align: center;
 }
