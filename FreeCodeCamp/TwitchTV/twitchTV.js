@@ -11,12 +11,12 @@ function getChannelsInfo () {
         statusType = "offline-li";
       }
       else if (data.stream === null) {
-          status = "offline";
-          statusType = "offline-li";
+        status = "offline";
+        statusType = "offline-li";
       }
       else {
-          status = data.stream.game + ": " + data.stream.channel.status;
-          statusType = "online-li";
+        status = data.stream.game + ": " + data.stream.channel.status;
+        statusType = "online-li";
           // console.log(statusType);
           // console.log(status);
       }
@@ -26,7 +26,7 @@ function getChannelsInfo () {
         if (data.display_name === undefined) {
           channelName = channel;
           url = "https://www.twitch.tv/";
-          logoUrl = "";
+          logoUrl = "http://dummyimage.com/100x100/000/fff.png&text=0x3F";
         }
         else {
           channelName = data.display_name;
@@ -36,7 +36,12 @@ function getChannelsInfo () {
         console.log(channel);
         console.log(statusType);
         console.log(status);
-        $("#channels-list").append('<li class=' + statusType + '><img class="logo" src="' + logoUrl + '"alt="Stream Logo"><a href="' + url + '" target="_blank">' + channelName + '</a> - ' + status + ' </li>');
+        if (statusType === "online-li") {
+          $("#channels-list").prepend('<li class=' + statusType + '><img class="logo" src="' + logoUrl + '"alt="Stream Logo"><a href="' + url + '" target="_blank">' + channelName + '</a> - ' + status + ' </li>');
+        }
+        else {
+          $("#channels-list").append('<li class=' + statusType + '><img class="logo" src="' + logoUrl + '"alt="Stream Logo"><a href="' + url + '" target="_blank">' + channelName + '</a> - ' + status + ' </li>');
+        }
       });
     });
   });
@@ -57,3 +62,4 @@ window.onload = function() {
     $(".online-li").css("display", "list-item");
   })
 }
+

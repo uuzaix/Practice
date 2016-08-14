@@ -14,4 +14,23 @@ html, body {
 
 #title {
   text-align: center;
+  margin: 20px;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+  margin-bottom: 3px;
+  padding: 10px;
+}
+li, .offline-li {
+  background-color: #f0ad4e;
+  
+}
+li, .online-li {
+  background-color: #5cb85c;
+}
+a {
+  text-decoration: none;
+  color: #000;
 }
