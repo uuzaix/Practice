@@ -3,8 +3,8 @@ var channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck"
 function getChannelsInfo () {
   channels.forEach(function(channel) {
     $.getJSON('https://api.twitch.tv/kraken/streams/' + channel + '?callback=?', function(data) {
-      console.log(data);
-      var status, link;
+      // console.log(data);
+      var status, statusType;
 
       if (data.stream === undefined) {
         status = "does not exist";
@@ -17,8 +17,6 @@ function getChannelsInfo () {
       else {
         status = data.stream.game + ": " + data.stream.channel.status;
         statusType = "online-li";
-          // console.log(statusType);
-          // console.log(status);
       }
       $.getJSON('https://api.twitch.tv/kraken/channels/' + channel + '?callback=?', function(data) {
         // console.log("channels ", data);
@@ -33,9 +31,6 @@ function getChannelsInfo () {
           url = data.url;
           logoUrl = data.logo;
         }
-        console.log(channel);
-        console.log(statusType);
-        console.log(status);
         if (statusType === "online-li") {
           $("#channels-list").prepend('<li class=' + statusType + '><img class="logo" src="' + logoUrl + '"alt="Stream Logo"><a href="' + url + '" target="_blank">' + channelName + '</a> - ' + status + ' </li>');
         }
