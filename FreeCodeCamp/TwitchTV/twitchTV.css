@@ -12,9 +12,13 @@ html, body {
   margin: 5px;
 }
 
-#title {
+#top {
   text-align: center;
-  margin: 20px;
+  margin: 25px;
+}
+
+#title {
+  margin-bottom: 20px; 
 }
 
 li {
@@ -30,7 +34,18 @@ li, .offline-li {
 li, .online-li {
   background-color: #5cb85c;
 }
-a {
+
+a a:visited {
   text-decoration: none;
+}
+
+a, a:hover, a:visited {
   color: #000;
+}
+
+.offline-li:hover{
+  background-color: #FFC675;
+}
+.online-li:hover{
+  background-color: #8AD38A;
 }
