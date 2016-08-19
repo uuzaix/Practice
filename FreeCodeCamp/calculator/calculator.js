@@ -42,10 +42,29 @@ window.onload = function() {
     }
   });
 
+function calculate (value, currOperator, result) {
+  if (currOperator === "+") {
+    result += parseInt(value.join(""));
+  }
+  else if (currOperator === "-") {
+    result -= parseInt(value.join(""));
+    console.log("minus ", result);
+  }
+  else if (currOperator === "/") {
+    result /= parseInt(value.join(""));
+  }
+  else if (currOperator === "*") {
+    result *= parseInt(value.join(""));
+  }
+  return result;
+}
+
   // handle equal input
   $("#equal").click(function(e) {
     userInput.push($(this).text());
     var currNumber = [];
+    currentOperator = "+"
+    var result = 0;
     var currentExpression = [];
     userInput.forEach(function(element) {
       var digits = /[0-9]/;
@@ -53,16 +72,20 @@ window.onload = function() {
         currNumber.push(element);
       }
       else if (element === "="){
-        currentExpression.push(currNumber.join(""));
+        currentExpression.push(currNumber.join(" "));
+        result = calculate(currNumber, currentOperator, result);
+        $("#result").text(result);
       }
       else {
         currentExpression.push(currNumber.join(""), element);
+        result = calculate(currNumber, currentOperator, result);
+        currentOperator = element;
         currNumber = [];
       }
     })
     userInput = [];
     console.log("input ", userInput);
-    console.log("result ", currentExpression);
+    console.log("currentExpression ", currentExpression);
   });
 }
 
