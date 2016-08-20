@@ -7,7 +7,7 @@ window.onload = function() {
     // console.log(value);
     $(this).click(function(e) {
       userInput.push(value);
-      $("#output").text(userInput.join(""));
+      $("#all-input").text(userInput.join(""));
       console.log(userInput);
     });
   });
@@ -20,14 +20,14 @@ window.onload = function() {
         userInput.pop();
       }
       userInput.push(operator);
-      $("#output").text(userInput.join(""));
+      $("#all-input").text(userInput.join(""));
 
     });
   });
 
   // clear all input
   $("#clear-all").click(function(e) {
-    $("#output").text("");
+    $("#all-input").text("");
     userInput = []
     console.log(userInput);
   });
@@ -38,7 +38,7 @@ window.onload = function() {
       while (!checkLastCharIsOperator(userInput)) {
         userInput.pop();
       }
-      $("#output").text(userInput.join(""));
+      $("#all-input").text(userInput.join(""));
     }
   });
 
@@ -62,6 +62,7 @@ function calculate (value, currOperator, result) {
   // handle equal input
   $("#equal").click(function(e) {
     userInput.push($(this).text());
+    $("#all-input").text(userInput.join(""));
     var currNumber = [];
     currentOperator = "+"
     var result = 0;

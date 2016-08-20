@@ -1,8 +1,12 @@
 #output {
-
   border-color: black;
   border-style: solid;
   height: 50px;
   width: 300px;
   margin: 30px;
 }
+
+#result {
+  font-size: 26px;
+}
+
