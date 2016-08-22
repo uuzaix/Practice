@@ -59,17 +59,17 @@ window.onload = function() {
 
 function calculate (value, currOperator, result) {
   if (currOperator === "+") {
-    result += parseInt(value.join(""));
+    result += parseFloat(value.join(""));
   }
   else if (currOperator === "-") {
-    result -= parseInt(value.join(""));
+    result -= parseFloat(value.join(""));
     console.log("minus ", result);
   }
   else if (currOperator === "/") {
-    result /= parseInt(value.join(""));
+    result /= parseFloat(value.join(""));
   }
   else if (currOperator === "*") {
-    result *= parseInt(value.join(""));
+    result *= parseFloat(value.join(""));
   }
   return result;
 }
@@ -83,12 +83,13 @@ function calculate (value, currOperator, result) {
       currentOperator = "+"
       var currentExpression = [];
       userInput.forEach(function(element) {
-        var digits = /[0-9]/;
+        var digits = /[0-9.]/;
         if (digits.test(element)) {
           currNumber.push(element);
         }
         else if (element === "="){
-          currentExpression.push(currNumber.join(" "));
+          currentExpression.push(currNumber.join(""));
+          // console.log("= ", currNumber.join(""));
           result = calculate(currNumber, currentOperator, result);
           $("#all-input").append(result);
           $("#result").text(result);
