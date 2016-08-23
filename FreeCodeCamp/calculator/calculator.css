@@ -17,22 +17,41 @@ html, body {
 }
 
 #calculator {
-  width: 40%;
+  width: 35%;
   border: solid black;
   margin: auto;
   padding: 40px;
+  background-color: grey;
+  border-radius: 20px;
 }
 
 #output {
   border-color: black;
   border-style: solid;
+  text-align: right;
   height: 90px;
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
   padding: 10px;
+  background-color: white;
+  font-size: 20px
 }
 
 #result {
-  font-size: 26px;
+  font-size: 35px;
 }
 
+.btn {
+  height: 50px;
+  width: 50px;
+  margin: 3px;
+}
+
+.operator {
+  margin-left: 30px;
+}
+
+.clear {
+  width: 80px;
+  margin-left: 30px;
+}

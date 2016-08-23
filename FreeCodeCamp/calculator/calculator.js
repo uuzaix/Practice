@@ -76,7 +76,7 @@ function calculate (value, currOperator, result) {
 
   // handle equal input
   $("#equal").click(function(e) {
-    if (userInput.length !== 0) {
+    if (userInput.length !== 0 && !checkLastCharIsOperator(userInput)) {
       userInput.push($(this).text());
       $("#all-input").text(userInput.join(""));
       var currNumber = [];
