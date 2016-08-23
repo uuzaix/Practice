@@ -1,9 +1,35 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.table-container {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.calculator-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#calculator {
+  width: 40%;
+  border: solid black;
+  margin: auto;
+  padding: 40px;
+}
+
 #output {
   border-color: black;
   border-style: solid;
-  height: 50px;
-  width: 300px;
-  margin: 30px;
+  height: 90px;
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
 }
 
 #result {
