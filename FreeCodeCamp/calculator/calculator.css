@@ -3,7 +3,7 @@ html, body {
   width: 100%;
 }
 
-.table-container {
+/*.table-layout: container {
   display: table;
   position: absolute;
   height: 100%;
@@ -14,27 +14,39 @@ html, body {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-}
+}*/
 
 #calculator {
-  width: 35%;
-  border: solid black;
-  margin: auto;
-  padding: 40px;
-  background-color: grey;
+  height: 450px;
+  width: 300px;
+  margin-top: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  border: solid #B3B5BE;
+  padding: 10px;
+  background-color: #D1D2D6;
   border-radius: 20px;
 }
 
 #output {
-  border-color: black;
-  border-style: solid;
+  border: solid #B3B5BE;
   text-align: right;
   height: 90px;
   width: 90%;
   margin: 20px auto;
   padding: 10px;
-  background-color: white;
-  font-size: 20px
+  background-color: #D6E1E3;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#input {
+  display: inline-block;
+  position: absolute;
+  width: 280px;
+  height: auto;
+  margin-top: 15px;
+  margin-left: 5px;
 }
 
 #result {
@@ -42,16 +54,29 @@ html, body {
 }
 
 .btn {
-  height: 50px;
+  height: 40px;
   width: 50px;
-  margin: 3px;
+  margin: 0px 4px 12px 8px;
+  background-color: #515473;
+  color: #FFF;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: 20px
 }
 
 .operator {
-  margin-left: 30px;
+  background-color: #535F6B;
 }
 
 .clear {
-  width: 80px;
-  margin-left: 30px;
+  background-color: #D27182;
+}
+
+#clear-all {
+  width: 116px
+}
+
+#plus {
+  height: 90px;
+  margin-top: -50px;
 }
