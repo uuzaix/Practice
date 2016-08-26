@@ -1,3 +1,8 @@
+@font-face {
+ font-family:'digital';
+ src: url('digital_font/digital-7.ttf');
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -38,6 +43,7 @@ html, body {
   background-color: #D6E1E3;
   font-size: 20px;
   font-weight: bold;
+  font-family:'digital';
 }
 
 #input {
@@ -62,6 +68,10 @@ html, body {
   border-radius: 7px;
   font-weight: bold;
   font-size: 20px
+}
+
+.btn, .btn:hover, .btn:active, .btn:focus {
+  color: #FFF;
 }
 
 .operator {
