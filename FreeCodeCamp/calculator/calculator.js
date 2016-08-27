@@ -68,7 +68,7 @@ function calculate (value, currOperator, result) {
     result /= parseFloat(value.join(""));
     console.log("divide ", result);
   }
-  else if (currOperator === "x") {
+  else if (currOperator === "\xD7") {
     result *= parseFloat(value.join(""));
   }
   return result;
@@ -110,7 +110,7 @@ function calculate (value, currOperator, result) {
 
 // returns true if last input char is operator, if digit - false
 function checkLastCharIsOperator (input) {
-  var operators =["-", "+", "x", "\xF7"]
+  var operators =["-", "+", "\xD7", "\xF7"]
   if (operators.includes(input[input.length - 1])) {
     return true;
   }
