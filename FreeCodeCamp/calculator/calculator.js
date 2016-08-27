@@ -4,14 +4,14 @@ window.onload = function() {
 
   //handle digits 
   $(".digit").each(function(index, button) {
-    var value = $(this).text();
-    // console.log(value);
+    var digit = $(this).text();
+    // console.log(digit);
     $(this).click(function(e) {
       if (userInput.length === 0) {
-        $("#result").text("");
+        $("#result").text("0");
         result = 0;
       }
-      userInput.push(value);
+      userInput.push(digit);
       $("#all-input").text(userInput.join(""));
       console.log(userInput);
     });
@@ -63,12 +63,12 @@ function calculate (value, currOperator, result) {
   }
   else if (currOperator === "-") {
     result -= parseFloat(value.join(""));
-    console.log("minus ", result);
   }
-  else if (currOperator === "/") {
+  else if (currOperator === "\xF7") {
     result /= parseFloat(value.join(""));
+    console.log("divide ", result);
   }
-  else if (currOperator === "*") {
+  else if (currOperator === "x") {
     result *= parseFloat(value.join(""));
   }
   return result;
@@ -110,7 +110,7 @@ function calculate (value, currOperator, result) {
 
 // returns true if last input char is operator, if digit - false
 function checkLastCharIsOperator (input) {
-  var operators =["-", "+", "*", "/"]
+  var operators =["-", "+", "x", "\xF7"]
   if (operators.includes(input[input.length - 1])) {
     return true;
   }
