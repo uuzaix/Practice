@@ -6,7 +6,7 @@ html, body {
 
 #calculator {
   height: 450px;
-  width: 300px;
+  width: 320px;
   margin-top: 25%;
   margin-right: auto;
   margin-left: auto;
@@ -43,7 +43,7 @@ html, body {
 
 .btn {
   height: 40px;
-  width: 50px;
+  width: 55px;
   margin: 0px 4px 12px 8px;
   background-color: #515473;
   color: #FFF;
@@ -65,7 +65,7 @@ html, body {
 }
 
 #clear-all {
-  width: 116px
+  width: 126px
 }
 
 #plus {

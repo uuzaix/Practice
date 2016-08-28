@@ -32,7 +32,7 @@ window.onload = function() {
         userInput.push(result);
         userInput.push(operator);
         $("#all-input").text(userInput.join(""));
-        $("#result").text("");
+        $("#result").text("0");
         result = 0;
       }
     });
@@ -40,8 +40,8 @@ window.onload = function() {
 
   // clear all input
   $("#clear-all").click(function(e) {
-    $("#all-input").text("");
-    $("#result").text("");
+    $("#all-input").text("0");
+    $("#result").text("0");
     result = 0;
     userInput = []
     console.log(userInput);
@@ -91,6 +91,10 @@ function calculate (value, currOperator, result) {
           currentExpression.push(currNumber.join(""));
           // console.log("= ", currNumber.join(""));
           result = calculate(currNumber, currentOperator, result);
+          var result_string = result.toString();
+          if (result_string.length > 9) {
+            result = Number(result_string.slice(0,9));
+          }
           $("#all-input").append(result);
           $("#result").text(result);
         }
