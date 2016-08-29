@@ -7,13 +7,15 @@ window.onload = function() {
     var digit = $(this).text();
     // console.log(digit);
     $(this).click(function(e) {
-      if (userInput.length === 0) {
-        $("#result").text("0");
-        result = 0;
+      if (userInput.length < 18) {
+        if (userInput.length === 0) {
+          $("#result").text("0");
+          result = 0;
+        }
+        userInput.push(digit);
+        $("#all-input").text(userInput.join(""));
+        console.log(userInput);
       }
-      userInput.push(digit);
-      $("#all-input").text(userInput.join(""));
-      console.log(userInput);
     });
   });
 
@@ -21,19 +23,21 @@ window.onload = function() {
   $(".operator").each(function(index, button) {
     var operator = $(this).text();
     $(this).click(function(e) {
-      if (userInput.length !== 0) {
-        if (checkLastCharIsOperator(userInput)) {
-          userInput.pop();
+      if (userInput.length < 17) {
+        if (userInput.length !== 0) {
+          if (checkLastCharIsOperator(userInput)) {
+            userInput.pop();
+          }
+          userInput.push(operator);
+          $("#all-input").text(userInput.join(""));
         }
-        userInput.push(operator);
-        $("#all-input").text(userInput.join(""));
-      }
-      if (userInput.length === 0 && result !== 0) {
-        userInput.push(result);
-        userInput.push(operator);
-        $("#all-input").text(userInput.join(""));
-        $("#result").text("0");
-        result = 0;
+        if (userInput.length === 0 && result !== 0) {
+          userInput.push(result);
+          userInput.push(operator);
+          $("#all-input").text(userInput.join(""));
+          $("#result").text("0");
+          result = 0;
+        }
       }
     });
   });
@@ -92,10 +96,15 @@ function calculate (value, currOperator, result) {
           // console.log("= ", currNumber.join(""));
           result = calculate(currNumber, currentOperator, result);
           var result_string = result.toString();
-          if (result_string.length > 9) {
-            result = Number(result_string.slice(0,9));
+          if (result_string.length > 8) {
+            if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
+              result = result.toFixed(7-result_string.indexOf("."));
+            }
+            else {
+              result = "too big";
+            }
           }
-          $("#all-input").append(result);
+          // $("#all-input").append(result);
           $("#result").text(result);
         }
         else {
