@@ -53,7 +53,8 @@ window.onload = function() {
 
   // clear last number
   $("#clear-last").click (function (e) {
-    if (userInput !== []) {
+    //console.log("clear", userInput);
+    if (userInput.length !== 0) {
       while (!checkLastCharIsOperator(userInput)) {
         userInput.pop();
       }
