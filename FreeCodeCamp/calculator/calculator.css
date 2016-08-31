@@ -45,12 +45,12 @@ html, body {
   height: 40px;
   width: 55px;
   margin: 0px 4px 12px 8px;
-  background-color: #515473;
   color: #FFF;
   border-radius: 7px;
   font-weight: bold;
   font-size: 20px;
-  box-shadow: 0 3px #999;
+  background-color: #515473;
+  box-shadow: 0 3px #2D304E;
 }
 
 .btn, .btn:hover, .btn:active, .btn:focus, .btn:active:focus {
@@ -59,16 +59,18 @@ html, body {
 }
 
 .btn:active {
-  box-shadow: 0 1px #666;
+  box-shadow: 0 0px;
   transform: translateY(3px);
 }
 
 .operator {
   background-color: #535F6B;
+  box-shadow: 0 3px #313D48;
 }
 
 .clear {
   background-color: #D27182;
+  box-shadow: 0 3px #9D2F42;
 }
 
 #clear-all {

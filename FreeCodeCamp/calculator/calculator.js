@@ -54,7 +54,7 @@ window.onload = function() {
   // clear last number
   $("#clear-last").click (function (e) {
     //console.log("clear", userInput);
-    if (userInput.length !== 0) {
+    if (userInput.length !== 0 && checkInputIncludesOperator(userInput)) {
       while (!checkLastCharIsOperator(userInput)) {
         userInput.pop();
       }
@@ -122,13 +122,21 @@ function calculate (value, currOperator, result) {
   });
 }
 
+var operators =["-", "+", "\xD7", "\xF7"];
+
 // returns true if last input char is operator, if digit - false
 function checkLastCharIsOperator (input) {
-  var operators =["-", "+", "\xD7", "\xF7"]
   if (operators.includes(input[input.length - 1])) {
     return true;
   }
   else {
     return false;
   }
+}
+//checks if input contains at least one operator
+function checkInputIncludesOperator(input) {
+  var givenOperators = operators.filter(function(op) {
+    return input.includes(op)
+  });
+  return givenOperators.length > 0 ? true : false;
 }
