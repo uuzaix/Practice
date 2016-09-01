@@ -18,6 +18,21 @@ window.onload = function() {
       }
     });
   });
+  //handle dot
+  $(".dot").click(function(e) {
+    var dot = $(this).text();
+    if (userInput.length === 0) {
+      userInput.push("0");
+      userInput.push(dot);
+      $("#all-input").text(userInput.join(""));
+      $("#result").text("0");
+      result = 0;
+    }
+    else if (userInput.length <18) {
+      userInput.push(dot);
+      $("#all-input").text(userInput.join(""));
+s    }
+  })
 
   // handle math operators
   $(".operator").each(function(index, button) {
