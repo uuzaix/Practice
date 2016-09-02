@@ -97,6 +97,9 @@ function calculate (value, currOperator, result) {
   // handle equal input
   $("#equal").click(function(e) {
     if (userInput.length !== 0 && !checkLastCharIsOperator(userInput)) {
+      if (userInput[userInput.length-1] === ".") {
+        userInput.pop();
+      }
       userInput.push($(this).text());
       $("#all-input").text(userInput.join(""));
       var currNumber = [];
