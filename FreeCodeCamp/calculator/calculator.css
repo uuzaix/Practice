@@ -2,22 +2,25 @@ html, body {
   font-family: 'Orbitron', sans-serif;
   height: 100%;
   width: 100%;
+  background-color: #DECEC7;
 }
 
 #calculator {
   height: 450px;
   width: 320px;
-  margin-top: 25%;
+  margin-top: 20%;
   margin-right: auto;
   margin-left: auto;
-  border: solid #B3B5BE;
+  /*border: solid 1px #B3B5BE;*/
   padding: 10px;
   background-color: #D1D2D6;
   border-radius: 20px;
+  box-shadow: 6px 9px 30px 0 rgba(0, 0, 0, 0.68), inset -2px -5px 15px 0 #584c46;
 }
 
 #output {
-  border: solid #B3B5BE;
+  border: solid 2px #B3B5BE;
+  border-radius: 7px;
   text-align: right;
   height: 90px;
   width: 90%;
