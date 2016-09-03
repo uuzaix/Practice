@@ -28,7 +28,7 @@ window.onload = function() {
       $("#result").text("0");
       result = 0;
     }
-    else if (userInput.length <18) {
+    else if (userInput.length <18 && userInput[userInput.length-1] !== ".") {
       userInput.push(dot);
       $("#all-input").text(userInput.join(""));
 s    }
@@ -62,18 +62,26 @@ s    }
     $("#all-input").text("0");
     $("#result").text("0");
     result = 0;
-    userInput = []
+    userInput = [];
     console.log(userInput);
   });
 
   // clear last number
   $("#clear-last").click (function (e) {
     //console.log("clear", userInput);
-    if (userInput.length !== 0 && checkInputIncludesOperator(userInput)) {
-      while (!checkLastCharIsOperator(userInput)) {
-        userInput.pop();
+    if (userInput.length !== 0) {
+      if (checkInputIncludesOperator(userInput)) {
+        while (!checkLastCharIsOperator(userInput)) {
+          userInput.pop();
+        }
+        $("#all-input").text(userInput.join(""));
       }
-      $("#all-input").text(userInput.join(""));
+      else {
+        $("#all-input").text("0");
+        $("#result").text("0");
+        result = 0;
+        userInput = [];
+      }
     }
   });
 
