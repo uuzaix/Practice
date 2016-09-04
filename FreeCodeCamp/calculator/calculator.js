@@ -1,7 +1,8 @@
 window.onload = function() {
-  var userInput = [];
+  var inputToDisplay = [];
   var result = 0;
   var currValue = [];
+  var lastOperator = "+";
 
   //handle digits 
   $(".digit").each(function(index, button) {
@@ -9,15 +10,15 @@ window.onload = function() {
     // console.log(digit);
     $(this).click(function(e) {
       if (currValue.length < 8) {
-        if (userInput.length === 0) {
+        if (inputToDisplay.length === 0) {
           $("#all-input").text("0");
           // result = 0;
         }
-        // userInput.push(digit);
+        // inputToDisplay.push(digit);
         currValue.push(digit);
         $("#result").text(currValue.join(""));
-        // $("#all-input").text(userInput.join(""));
-        // console.log(userInput);
+        // $("#all-input").text(inputToDisplay.join(""));
+        // console.log(inputToDisplay);
       }
     });
   });
@@ -32,7 +33,7 @@ window.onload = function() {
     if (currValue.length <8 && !currValue.includes(".")) {
       currValue.push(dot);
       $("#result").text(currValue.join(""));
-      // $("#all-input").text(userInput.join(""));
+      // $("#all-input").text(inputToDisplay.join(""));
     }
   })
 
@@ -40,23 +41,29 @@ window.onload = function() {
   $(".operator").each(function(index, button) {
     var operator = $(this).text();
     $(this).click(function(e) {
-      if (userInput.length < 17) {
+      if (inputToDisplay.length < 17) {
+        if (checkLastCharIsOperator(inputToDisplay) && currValue.length === 0) {
+          inputToDisplay.pop();
+          inputToDisplay.push(operator);
+        }
         if (currValue.length !== 0) {
-          userInput.push(currValue.join(""));
-          userInput.push(operator);
+          inputToDisplay.push(currValue.join(""));
+          inputToDisplay.push(operator);
+          console.log("before operator ", currValue, lastOperator, result);
+          result = calculate(currValue, lastOperator, result);
+          console.log("after operator ", currValue, lastOperator, result);
+          console.log("operator", result);
+        }
+        // if (currValue.length === 0 && result !== 0) {
+        //   inputToDisplay.push(result);
+        //   inputToDisplay.push(operator);
+        //   currValue = [].push(result);
+        //   result = calculate(currValue, lastOperator, result);
+        //   // result = 0;
+        // }
           currValue = [];
-          console.log(userInput);
-        }
-        if (checkLastCharIsOperator(userInput)) {
-          userInput.pop();
-          userInput.push(operator);
-        }
-        if (currValue.length === 0 && result !== 0) {
-          userInput.push(result);
-          userInput.push(operator);
-          result = 0;
-        }
-          $("#all-input").text(userInput.join(""));
+          lastOperator = operator;
+          $("#all-input").text(inputToDisplay.join(""));
       }
     });
   });
@@ -66,14 +73,14 @@ window.onload = function() {
     $("#all-input").text("0");
     $("#result").text("0");
     result = 0;
-    userInput = [];
+    inputToDisplay = [];
     currValue = [];
-    console.log(userInput);
+    console.log(inputToDisplay);
   });
 
   // clear last number
   $("#clear-last").click (function (e) {
-    //console.log("clear", userInput);
+    //console.log("clear", inputToDisplay);
     if (currValue.length !== 0) {
       $("#result").text("0");
       currValue = [];
@@ -104,49 +111,56 @@ function calculate (value, currOperator, result) {
 
   // handle equal input
   $("#equal").click(function(e) {
-    if (userInput.length !== 0 && currValue.length !== 0) {
+    if (inputToDisplay.length !== 0 && currValue.length !== 0) {
       if (currValue[currValue.length-1] === ".") {
         currValue.pop();
       }
-      userInput.push(currValue.join(""));
-      userInput.push($(this).text());
-      $("#all-input").text(userInput.join(""));
+      inputToDisplay.push(currValue.join(""));
+      inputToDisplay.push($(this).text());
+      $("#all-input").text(inputToDisplay.join(""));
+      console.log("before equal ", currValue, lastOperator, result);
+      result = calculate(currValue, lastOperator, result);
+      console.log("equal ", result);
+      $("#result").text(result);
       currValue = [];
-      var currNumber = [];
-      currentOperator = "+"
-      var currentExpression = [];
-      userInput.forEach(function(element) {
-        var digits = /[0-9.]/;
-        if (digits.test(element)) {
-          currNumber.push(element);
-        }
-        else if (element === "="){
-          currentExpression.push(currNumber.join(""));
-          // console.log("= ", currNumber.join(""));
-          result = calculate(currNumber, currentOperator, result);
-          var result_string = result.toString();
-          if (result_string.length > 8) {
-            if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
-              result = result.toFixed(7-result_string.indexOf("."));
-            }
-            else {
-              result = "too big";
-            }
-          }
-          // $("#all-input").append(result);
-          $("#result").text(result);
-        }
-        else {
-          currentExpression.push(currNumber.join(""), element);
-          result = calculate(currNumber, currentOperator, result);
-          currentOperator = element;
-          currNumber = [];
-        }
-      });
-      userInput = [];
+      lastOperator = "+";
+
+      // currValue = [];
+      // var currNumber = [];
+      // var currentOperator = "+"
+      // var currentExpression = [];
+      // inputToDisplay.forEach(function(element) {
+      //   var digits = /[0-9.]/;
+      //   if (digits.test(element)) {
+      //     currNumber.push(element);
+      //   }
+      //   else if (element === "="){
+      //     currentExpression.push(currNumber.join(""));
+      //     // console.log("= ", currNumber.join(""));
+      //     result = calculate(currNumber, currentOperator, result);
+      //     var result_string = result.toString();
+      //     if (result_string.length > 8) {
+      //       if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
+      //         result = result.toFixed(7-result_string.indexOf("."));
+      //       }
+      //       else {
+      //         result = "too big";
+      //       }
+      //     }
+      //     // $("#all-input").append(result);
+      //     $("#result").text(result);
+      //   }
+      //   else {
+      //     currentExpression.push(currNumber.join(""), element);
+      //     result = calculate(currNumber, currentOperator, result);
+      //     currentOperator = element;
+      //     currNumber = [];
+      //   }
+      // });
+      inputToDisplay = [];
       result = 0;
-      console.log("input ", userInput);
-      console.log("currentExpression ", currentExpression);
+      console.log("input ", inputToDisplay);
+      // console.log("currentExpression ", currentExpression);
     }
   });
 }
