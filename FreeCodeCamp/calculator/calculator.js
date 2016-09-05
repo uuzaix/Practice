@@ -1,8 +1,9 @@
 window.onload = function() {
   var inputToDisplay = [];
   var result = 0;
+  var currResult = 0;
   var currValue = [];
-  var lastOperator = "+";
+  var currOperator = "+";
 
   //handle digits 
   $(".digit").each(function(index, button) {
@@ -28,7 +29,7 @@ window.onload = function() {
     if (currValue.length === 0) {
       currValue.push("0");
       // $("#result").text("0");
-      result = 0; ///????????????????
+      // result = 0;
     }
     if (currValue.length <8 && !currValue.includes(".")) {
       currValue.push(dot);
@@ -49,20 +50,17 @@ window.onload = function() {
         if (currValue.length !== 0) {
           inputToDisplay.push(currValue.join(""));
           inputToDisplay.push(operator);
-          console.log("before operator ", currValue, lastOperator, result);
-          result = calculate(currValue, lastOperator, result);
-          console.log("after operator ", currValue, lastOperator, result);
-          console.log("operator", result);
+          currResult = calculate(currValue, currOperator, currResult);
         }
-        // if (currValue.length === 0 && result !== 0) {
-        //   inputToDisplay.push(result);
-        //   inputToDisplay.push(operator);
-        //   currValue = [].push(result);
-        //   result = calculate(currValue, lastOperator, result);
-        //   // result = 0;
-        // }
+        if (currValue.length === 0 && result !== 0) {
+          inputToDisplay.push(result);
+          inputToDisplay.push(operator);
+          currValue = [result];
+          currResult = calculate(currValue, currOperator, currResult);
+          result = 0;
+        }
           currValue = [];
-          lastOperator = operator;
+          currOperator = operator;
           $("#all-input").text(inputToDisplay.join(""));
       }
     });
@@ -73,6 +71,7 @@ window.onload = function() {
     $("#all-input").text("0");
     $("#result").text("0");
     result = 0;
+    currResult = 0;
     inputToDisplay = [];
     currValue = [];
     console.log(inputToDisplay);
@@ -92,21 +91,21 @@ window.onload = function() {
     }
   });
 
-function calculate (value, currOperator, result) {
+function calculate (value, currOperator, currResult) {
   if (currOperator === "+") {
-    result += parseFloat(value.join(""));
+    currResult += parseFloat(value.join(""));
   }
   else if (currOperator === "-") {
-    result -= parseFloat(value.join(""));
+    currResult -= parseFloat(value.join(""));
   }
   else if (currOperator === "\xF7") {
-    result /= parseFloat(value.join(""));
-    console.log("divide ", result);
+    currResult /= parseFloat(value.join(""));
+    console.log("divide ", currResult);
   }
   else if (currOperator === "\xD7") {
-    result *= parseFloat(value.join(""));
+    currResult *= parseFloat(value.join(""));
   }
-  return result;
+  return currResult;
 }
 
   // handle equal input
@@ -118,13 +117,25 @@ function calculate (value, currOperator, result) {
       inputToDisplay.push(currValue.join(""));
       inputToDisplay.push($(this).text());
       $("#all-input").text(inputToDisplay.join(""));
-      console.log("before equal ", currValue, lastOperator, result);
-      result = calculate(currValue, lastOperator, result);
-      console.log("equal ", result);
+      console.log("before equal ", currValue, currOperator, currResult);
+      currResult = calculate(currValue, currOperator, currResult);
+      console.log("equal ", currResult);
+      result = currResult;
+      var result_string = result.toString();
+      if (result_string.length > 8) {
+        if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
+          result = result.toFixed(7-result_string.indexOf("."));
+        }
+        else {
+          result = "too big";
+        }
+      }
       $("#result").text(result);
       currValue = [];
-      lastOperator = "+";
-
+      currOperator = "+";
+      inputToDisplay = [];
+      currResult = 0;
+      console.log("input ", inputToDisplay);
       // currValue = [];
       // var currNumber = [];
       // var currentOperator = "+"
@@ -157,9 +168,6 @@ function calculate (value, currOperator, result) {
       //     currNumber = [];
       //   }
       // });
-      inputToDisplay = [];
-      result = 0;
-      console.log("input ", inputToDisplay);
       // console.log("currentExpression ", currentExpression);
     }
   });
