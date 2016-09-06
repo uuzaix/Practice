@@ -8,18 +8,14 @@ window.onload = function() {
   //handle digits 
   $(".digit").each(function(index, button) {
     var digit = $(this).text();
-    // console.log(digit);
     $(this).click(function(e) {
       if (currValue.length < 8) {
         if (inputToDisplay.length === 0) {
           $("#all-input").text("0");
           // result = 0;
         }
-        // inputToDisplay.push(digit);
         currValue.push(digit);
         $("#result").text(currValue.join(""));
-        // $("#all-input").text(inputToDisplay.join(""));
-        // console.log(inputToDisplay);
       }
     });
   });
@@ -28,13 +24,10 @@ window.onload = function() {
     var dot = $(this).text();
     if (currValue.length === 0) {
       currValue.push("0");
-      // $("#result").text("0");
-      // result = 0;
     }
     if (currValue.length <8 && !currValue.includes(".")) {
       currValue.push(dot);
       $("#result").text(currValue.join(""));
-      // $("#all-input").text(inputToDisplay.join(""));
     }
   })
 
@@ -62,6 +55,7 @@ window.onload = function() {
           currValue = [];
           currOperator = operator;
           $("#all-input").text(inputToDisplay.join(""));
+          $("#result").text("0");
       }
     });
   });
@@ -79,7 +73,6 @@ window.onload = function() {
 
   // clear last number
   $("#clear-last").click (function (e) {
-    //console.log("clear", inputToDisplay);
     if (currValue.length !== 0) {
       $("#result").text("0");
       currValue = [];
@@ -125,6 +118,10 @@ function calculate (value, currOperator, currResult) {
       if (result_string.length > 8) {
         if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
           result = result.toFixed(7-result_string.indexOf("."));
+          console.log("tofixed ", result);
+          while (result.endsWith("0")) {
+            result = result.substring(0, result.length-2);
+          }
         }
         else {
           result = "too big";
@@ -136,39 +133,6 @@ function calculate (value, currOperator, currResult) {
       inputToDisplay = [];
       currResult = 0;
       console.log("input ", inputToDisplay);
-      // currValue = [];
-      // var currNumber = [];
-      // var currentOperator = "+"
-      // var currentExpression = [];
-      // inputToDisplay.forEach(function(element) {
-      //   var digits = /[0-9.]/;
-      //   if (digits.test(element)) {
-      //     currNumber.push(element);
-      //   }
-      //   else if (element === "="){
-      //     currentExpression.push(currNumber.join(""));
-      //     // console.log("= ", currNumber.join(""));
-      //     result = calculate(currNumber, currentOperator, result);
-      //     var result_string = result.toString();
-      //     if (result_string.length > 8) {
-      //       if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
-      //         result = result.toFixed(7-result_string.indexOf("."));
-      //       }
-      //       else {
-      //         result = "too big";
-      //       }
-      //     }
-      //     // $("#all-input").append(result);
-      //     $("#result").text(result);
-      //   }
-      //   else {
-      //     currentExpression.push(currNumber.join(""), element);
-      //     result = calculate(currNumber, currentOperator, result);
-      //     currentOperator = element;
-      //     currNumber = [];
-      //   }
-      // });
-      // console.log("currentExpression ", currentExpression);
     }
   });
 }
