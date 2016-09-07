@@ -12,7 +12,7 @@ window.onload = function() {
       if (currValue.length < 8) {
         if (inputToDisplay.length === 0) {
           $("#all-input").text("0");
-          // result = 0;
+          result = 0;
         }
         currValue.push(digit);
         $("#result").text(currValue.join(""));
