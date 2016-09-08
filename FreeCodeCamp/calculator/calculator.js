@@ -14,11 +14,14 @@ window.onload = function() {
           $("#all-input").text("0");
           result = 0;
         }
-        currValue.push(digit);
-        $("#result").text(currValue.join(""));
+        if (!(currValue.length === 0 && digit == "0")) {
+          currValue.push(digit);
+          $("#result").text(currValue.join(""));
+        }
       }
     });
   });
+  
   //handle dot
   $(".dot").click(function(e) {
     var dot = $(this).text();
@@ -71,7 +74,6 @@ window.onload = function() {
     currResult = 0;
     inputToDisplay = [];
     currValue = [];
-    console.log(inputToDisplay);
   });
 
   // clear last number
@@ -112,16 +114,13 @@ function calculate (value, currOperator, currResult) {
       inputToDisplay.push(currValue.join(""));
       inputToDisplay.push($(this).text());
       $("#all-input").text(inputToDisplay.join(""));
-      // console.log("before equal ", currValue, currOperator, currResult);
       currResult = calculate(currValue, currOperator, currResult);
-      // console.log("equal ", currResult);
       result = formatResult(currResult);
       $("#result").text(result);
       currValue = [];
       currOperator = "+";
       inputToDisplay = [];
       currResult = 0;
-      console.log("input ", inputToDisplay);
     }
   });
 }
@@ -144,7 +143,6 @@ function formatResult(result) {
   if (result_string.length > 8) {
     if (result_string.indexOf(".") !== -1 && result_string.indexOf(".") < 8) {
       result = result.toFixed(7-result_string.indexOf("."));
-      console.log("tofixed ", result);
       while (result.endsWith("0")) {
         result = result.substring(0, result.length-1);
       }
