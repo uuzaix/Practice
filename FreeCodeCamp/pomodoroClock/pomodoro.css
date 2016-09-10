@@ -1,0 +1,13 @@
+html, body {
+  /*font-family: 'Orbitron', sans-serif;*/
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+	text-align: center;
+}
+
+#clock {
+	height: 50px;
+}
