@@ -11,6 +11,10 @@ window.onload = function() {
     $("#pause").click(function(e) {
       clearInterval(timeInterval);
     });
+    $("#stop").click(function(e) {
+      clearInterval(timeInterval);
+      timeLeft = 10;
+      $("#clock").text(0);
+    });
   });
-  
 }
