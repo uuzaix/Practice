@@ -1,25 +1,28 @@
 window.onload = function() {
-  var timeLeft = 10;
-  var pauseTimeLeft = 5;
-  $("#clock").text(timeLeft);
+  var time = 10;
+  var pauseTime = 5;
+  $("#clock").text(time);
+  $("#workTime").text(time);
+  $("#pauseTime").text(pauseTime);
   $("#start").click(function(e) {
+    var timeLeft = time;
+    var pauseTimeLeft = pauseTime;
     var timeInterval = setInterval(function() {
       if (timeLeft >= 0) {
-
-        $("#clock").text(timeLeft);
+        $("#clock").text("Work: " + timeLeft);
         timeLeft --;
       }
       else {
         clearInterval(timeInterval);
         var pauseInterval = setInterval(function() {
           if (pauseTimeLeft >= 0) {
-          $("#clock").text(pauseTimeLeft);
-          pauseTimeLeft --;
-        }
-        else {
-          clearInterval(pauseInterval);
+            $("#clock").text("Pause: " + pauseTimeLeft);
+            pauseTimeLeft--;
           }
-        }, 1000);
+          else {
+            clearInterval(pauseInterval);
+            }
+          }, 1000);
       }
     }, 1000);
 
@@ -28,19 +31,33 @@ window.onload = function() {
     });
     $("#stop").click(function(e) {
       clearInterval(timeInterval);
-      timeLeft = 10;
-      $("#clock").text(timeLeft);
+      $("#clock").text(time);
     });
   });
 
   $("#timerUp").click(function(e) {
-    timeLeft ++;
-    $("#clock").text(timeLeft);
+    time++;
+    $("#clock").text(time);
+    $("#workTime").text(time);
   });
 
   $("#timerDown").click(function(e) {
-    timeLeft --;
-    $("#clock").text(timeLeft);
+    if (time > 0) {
+      time--;
+    }
+    $("#clock").text(time);
+    $("#workTime").text(time);
+  });
+  $("#pauseUp").click(function(e) {
+    pauseTime ++;
+    $("#pauseTime").text(pauseTime);
+  });
+
+  $("#pauseDown").click(function(e) {
+    if (pauseTime > 0) {
+      pauseTime --;
+      $("#pauseTime").text(pauseTime);
+    }
   });
 
 }
