@@ -4,17 +4,19 @@ window.onload = function() {
   $("#clock").text(time);
   $("#workTime").text(time);
   $("#pauseTime").text(pauseTime);
-  $("#start").click(function(e) {
+  var timeInterval;
+  var pauseInterval
+  function start() {
     var timeLeft = time;
     var pauseTimeLeft = pauseTime;
-    var timeInterval = setInterval(function() {
+    timeInterval = setInterval(function() {
       if (timeLeft >= 0) {
         $("#clock").text("Work: " + timeLeft);
         timeLeft --;
       }
       else {
         clearInterval(timeInterval);
-        var pauseInterval = setInterval(function() {
+        pauseInterval = setInterval(function() {
           if (pauseTimeLeft >= 0) {
             $("#clock").text("Pause: " + pauseTimeLeft);
             pauseTimeLeft--;
@@ -28,17 +30,26 @@ window.onload = function() {
 
     $("#pause").click(function(e) {
       clearInterval(timeInterval);
+      clearInterval(pauseInterval);
     });
     $("#stop").click(function(e) {
       clearInterval(timeInterval);
+      clearInterval(pauseInterval);
       $("#clock").text(time);
     });
+  }
+
+
+  $("#start").click(function(e) {
+    start();
   });
 
   $("#timerUp").click(function(e) {
     time++;
     $("#clock").text(time);
     $("#workTime").text(time);
+    clearInterval(timeInterval);
+    start();
   });
 
   $("#timerDown").click(function(e) {
