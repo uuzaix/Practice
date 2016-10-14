@@ -14,15 +14,19 @@ html, body {
   width: 100%;
 }
 
-.cont {
+.content {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   /*padding: 20px;*/
 }
 
-.content {
+.banner {
   padding: 40px;
+}
+
+#search-results {
+  text-align: left;
 }
 
 li {
