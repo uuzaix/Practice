@@ -1,5 +1,5 @@
 window.onload = function() {
-  $("#wiki-btn").click(function(){
+  $("#random-btn").click(function(){
     var win = window.open("https://en.wikipedia.org/wiki/Special:Random", '_blank');
     if (win) {
       console.log("aaa");
