@@ -1,57 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <title>Quote-Machine</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="quotes.css">
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://use.fontawesome.com/0694bcade9.js"></script>
+  <script src="quotes.js"></script>
 </head>
+
 <body>
-  <script>
-  var quoteNumber = -1;
-  var currentQuote;
-  var currentAuthor;
-    function getNextQuote () {
-      $.getJSON("quotes.json", function (json){
-        var ind = Math.floor(Math.random()*json.quotes.length);
-        while (quoteNumber === ind) {
-          ind = Math.floor(Math.random()*json.quotes.length);
-        }
-        quoteNumber = ind;
-        currentQuote = json.quotes[ind].quote;
-        currentAuthor = json.quotes[ind].author
-        $("#quoteContent").html("<blockquote class='foo'><p>" + currentQuote +"</p><footer>" + currentAuthor + "</footer></blockquote>");
-      });
-    }
-
-var colors = ["#FFE699", "#FFDB6E", "#F4C949", "#E4B21E", "#B0870D","#A7F865", "#A0F05D", "#92DF52", "#74AD44", "#84EFD7", "#84EFD7", "#61E3C6", "#61E3C6", "#44D4B3"];
-    function selectColor () {
-      var color = colors[Math.floor(Math.random()*colors.length)];
-      $(".vertical-center").css("background-color", color);
-    }
-
-    $(document).ready(function() {
-      getNextQuote();
-      selectColor();
-      $("#nextQuote").on("click", function() {
-        getNextQuote();
-        selectColor();
-      })
-      $("#tweetQuote").on("click", function() {
-        if (currentQuote.length > 100) {
-          currentQuote = currentQuote.slice(0, 100) + "..."
-        }
-        $("#tweetQuote").attr('href', 'https://twitter.com/intent/tweet?text=' + '"' + currentQuote + '" - ' + currentAuthor)
-        ;
-      })
-    })
-
-  </script>
-
   <div class="container-fluid">
     <div class="jumbotron vertical-center">
       <div class="row text-center">
@@ -69,9 +32,10 @@ var colors = ["#FFE699", "#FFDB6E", "#F4C949", "#E4B21E", "#B0870D","#A7F865", "
         <span>
           <button id="nextQuote" class="btn btn-info">Another Quote</button>
         </span>
-        </div>
       </div>
     </div>
+  </div>
 
 </body>
+
 </html>
