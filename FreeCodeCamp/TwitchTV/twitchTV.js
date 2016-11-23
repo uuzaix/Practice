@@ -1,9 +1,8 @@
 var channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 
-function getChannelsInfo () {
+function getChannelsInfo() {
   channels.forEach(function(channel) {
-    $.getJSON('https://api.twitch.tv/kraken/streams/' + channel + '?callback=?', function(data) {
-      // console.log(data);
+    $.getJSON('https://wind-bow.hyperdev.space/twitch-api/streams/' + channel + '?callback=?', function (data) {
       var status, statusType;
 
       if (data.stream === undefined) {
@@ -18,13 +17,12 @@ function getChannelsInfo () {
         status = data.stream.game + ": " + data.stream.channel.status;
         statusType = "online-li";
       }
-      $.getJSON('https://api.twitch.tv/kraken/channels/' + channel + '?callback=?', function(data) {
-        // console.log("channels ", data);
+      $.getJSON('https://wind-bow.hyperdev.space/twitch-api/channels/' + channel + '?callback=?', function (data) {
         var channelName, url, logoUrl;
         if (data.display_name === undefined) {
           channelName = channel;
           url = "https://www.twitch.tv/";
-          logoUrl = "http://dummyimage.com/100x100/000/fff.png&text=0x3F";
+          logoUrl = "http://dummyimage.com/100x100/000/fff.png&text=??";
         }
         else {
           channelName = data.display_name;
