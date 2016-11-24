@@ -6,6 +6,11 @@ html, body {
   line-height: 1.4em;
   background-color: #D5D5D5;
 }
+
+.container {
+  width: fit-content;
+}
+
 .logo {
   height: 40px;
   border-radius: 20px;
@@ -27,10 +32,11 @@ li {
   margin-bottom: 3px;
   padding: 10px;
 }
+
 li, .offline-li {
   background-color: #f0ad4e;
-  
 }
+
 li, .online-li {
   background-color: #5cb85c;
 }
@@ -46,6 +52,7 @@ a, a:hover, a:visited {
 .offline-li:hover{
   background-color: #FFC675;
 }
+
 .online-li:hover{
   background-color: #8AD38A;
 }
