@@ -7,10 +7,6 @@ html, body {
   background-color: #D5D5D5;
 }
 
-.container {
-  width: fit-content;
-}
-
 .logo {
   height: 40px;
   border-radius: 20px;
@@ -52,7 +48,6 @@ a, a:hover, a:visited {
 .offline-li:hover{
   background-color: #FFC675;
 }
-
 .online-li:hover{
   background-color: #8AD38A;
 }
