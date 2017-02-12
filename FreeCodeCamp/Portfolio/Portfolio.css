@@ -27,7 +27,7 @@ html, body {
     background-color: #DF744A;
     display: table;
     position: relative;
-    height: 70%;
+    height: 50%;
     width: 100%;
 }
 
@@ -87,7 +87,7 @@ html, body {
 }
 
 .portfolio-pic {
-    margin: 5px;
+    margin: 10px auto;
     border: 1px solid #ccc;
 }
 
@@ -134,13 +134,13 @@ html, body {
     #custom-fa {
         display: none;
     }
-    #about-content{
+    #about-content {
         font-size: 0.7em;
     }
     .intro {
         font-size: 2em;
     }
-    .intro-list li{
+    .intro-list li {
         font-size: 1em;
     }
     .title {
