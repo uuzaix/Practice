@@ -5,7 +5,7 @@ function findPairWithSum(arr, sum) {
   minIndex = 0;
   maxIndex = arr.length - 1;
 
-  while (minIndex !== maxIndex) {
+  while (minIndex < maxIndex) {
     let tempSum = arr[minIndex] + arr[maxIndex];
     if (tempSum === sum) {
       return [arr[minIndex], arr[maxIndex]]
@@ -16,7 +16,9 @@ function findPairWithSum(arr, sum) {
     }
   }
   return 'no pair'
-}
+  }
 
-console.log(findPair([1, 2, 3, 9], 8))
-console.log(findPair([1, 2, 4, 4], 8))
+console.log(findPairWithSum([1, 2, 3, 9], 8))
+console.log(findPairWithSum([1, 2, 4, 4], 8))
+console.log(findPairWithSum([1, 3, 4, 4, 5], 8))
+console.log(findPairWithSum([], 8))
