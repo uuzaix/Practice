@@ -1,0 +1,15 @@
+{
+  "name": "async_await",
+  "version": "1.0.0",
+  "description": "",
+  "main": "then.js",
+  "scripts": {
+    "test": "node --harmony-async-await 2_async.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^1.6.3"
+  }
+}
