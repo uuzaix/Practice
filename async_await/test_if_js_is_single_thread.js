@@ -10,17 +10,17 @@ function f2() {
   a += "e"
 }
 
-function runAsync(f) {
-  setTimeout(f, 0);
+function runAsync(f, cb) {
+  setTimeout(() => {
+    f();
+    cb()
+  }, 0);
 }
 
 function waitAll(computations, onBothFinished) {
-  let counter = 0;
-  computations.forEach(computation => {
-    runAsync(() => {
-      computation();
-      counter++;
-      if (counter === computations.length) {
+  computations.forEach((computation, index) => {
+    runAsync(computation, () => {
+      if (index + 1 === computations.length) {
         onBothFinished();
       }
     });
