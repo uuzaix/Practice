@@ -18,9 +18,11 @@ function runAsync(f, cb) {
 }
 
 function waitAll(computations, onBothFinished) {
+  let counter = 0;
   computations.forEach((computation, index) => {
     runAsync(computation, () => {
-      if (index + 1 === computations.length) {
+      counter++;
+      if (counter === computations.length) {
         onBothFinished();
       }
     });
