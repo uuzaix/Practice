@@ -23,7 +23,7 @@ function waitAll(computations, onFinished) {
     runAsync(computation, () => {
       counter++;
       if (counter === computations.length) {
-        console.log("onFinished")
+        // console.log("onFinished")
         onFinished();
       }
     });
@@ -43,22 +43,31 @@ function test(cb) {
 
 let result = [];
 
-function runSequentially(testFunc, times) {
+function runSequentially(testFunc, times, intermediateCall, lastCall) {
   testFunc(() => {
     if (times === 0) {
-      console.log(result);
+      lastCall();
     }
     if (times > 0) {
-      result.push(a);
-      a = "a";
-      runSequentially(testFunc, times - 1);
+      intermediateCall();
+      runSequentially(testFunc, times - 1, intermediateCall, lastCall);
     }
   })
 }
 
 
 function testStat() {
-  runSequentially(test, 10);
+  runSequentially(
+    test,
+    10,
+    () => {
+      result.push(a);
+      a = "a";
+    },
+    () => {
+      console.log(result)
+    }
+  );
 }
 
 testStat();
