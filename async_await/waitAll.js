@@ -56,18 +56,24 @@ function runSequentially(testFunc, times, intermediateCall, lastCall) {
 }
 
 
-function testStat() {
+let stat = { total: 0 };
+function testStat(times) {
   runSequentially(
     test,
-    10,
+    times,
     () => {
-      result.push(a);
+      stat.total = stat.total + 1;
+      if (stat[a]) {
+        stat[a] = stat[a] + 1;
+      } else {
+        stat[a] = 1;
+      }
       a = "a";
     },
     () => {
-      console.log(result)
+      console.log(stat);
     }
   );
 }
 
-testStat();
+testStat(1000);
